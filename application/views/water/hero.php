@@ -1,0 +1,1 @@
+<div class="block_bg" id="hero_bg"></div>

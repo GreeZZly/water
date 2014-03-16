@@ -1,0 +1,172 @@
+body, html {
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+	color: #31322C;
+	font-size: 18px;
+	line-height: 1.5em;
+}
+
+a{
+	text-decoration: none;
+	color: #fff;
+}
+
+
+/****************************** WATER **********************/
+.block_title {
+	text-align: center;
+	margin: 20px;
+}
+
+#orderform_bg {
+	background-color: #EAFEE5;
+}
+
+#header_bg {
+	background-color: #2DA511;
+	padding: 20px 0;
+}
+
+#header {
+	color: #fefefe;
+	/*font-size: 16px;*/
+}
+
+.header_cont {
+	font-size: 24px;
+	font-weight: bold;
+}
+
+#header .span6 .row {
+	margin: 10px 0;
+}
+
+#navbar_bg {
+	margin: 20px 0;
+	font-size: 18px;
+}
+
+#navbar_bg {
+background-color:#2DA511;
+}
+
+.nav_item {
+	display: inline-block;
+	padding: 10px;
+	cursor: pointer;
+	color: #fefefe;
+	-webkit-transition: color 0.2s linear;
+	     -moz-transition: color 0.2s linear;
+	       -o-transition: color 0.2s linear;
+	          transition: color 0.2s linear;
+}
+.nav_item:hover {
+	color:#535353;
+}
+.first_item {
+	font-weight: bold;
+	color: #FFFF00;
+}
+
+
+
+#hero_bg {
+	background-image: url(/include/images/hero.jpg);
+	background-position: center; 
+	height: 360px;
+}
+#water_counter {
+	padding: 10px;
+	background-color: #30B821;
+	color: #fefefe;
+	border: 2px solid #99FF99;
+}
+#water_counter select{
+	width: 50px;
+
+}
+
+#description_bg {
+	padding: 20px 0;
+	line-height: 1.5em;
+}
+
+#reviews_background {
+	background-color: #91DCF3;
+}
+
+#reviews_background ul li{line-height: 1.5em ;}
+
+#reviews .span3 img {
+	display: block;
+	margin: 0 auto;
+}
+#reviews .span9 {
+	padding-right:50px; 
+}
+#portfolio_row img {
+	width: 180px;
+}
+#portfolio_background {
+	background-color: #EAFEE5;
+}
+#dostavka_bg {
+	padding: 20px 0;
+}
+
+#shedule_bg {
+	height: 300px;
+	padding: 20px 0;
+}
+#shedule .row-fluid div {
+	font-size: 20px;
+	height: 30px;
+}
+.shedule_title {
+	margin: 20px 0;
+	font-size: 26px;
+	font-weight: bold;
+}
+#consist_bg {
+	background-color: #EAFEE5;
+	position: relative;
+}
+#consist {
+	font-size: 32px;
+	line-height: 42px;
+	padding-bottom: 69px;
+}
+#consist_table_title {
+	border-bottom: 2px solid #0D4500;
+	padding: 10px 0;
+	margin: 10px 0 20px; 
+}
+.consist_middle_span {
+	text-align: center;
+}
+
+#consist_grass {
+	height: 69px;
+	width: 100%;
+	background-image: url(/include/images/grass.png);
+	position: absolute;
+	bottom: -1px;
+}
+#footer_bg {
+	background-color: #2C9A07;
+	padding: 30px 0 10px;
+}
+#footer {
+	color: #fefefe;
+	font-size: 24px;
+	line-height: 50px;
+}
+
+#logo_ss {
+	float:right;
+}
+#bottom_line {
+	margin-top: 40px;
+	font-size: 18px;
+}
