@@ -45,8 +45,8 @@ $(document).ready(function (){
        }
 
     });
-	$('#submitBtn').on('click', function(e){
-        e.preventDefault();
+	$('#submitBtn').on('click', function(){
+        
 		if ($("#order_form form").validate()) {
 			$("#order_form form").submit();
 		}

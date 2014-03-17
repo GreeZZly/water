@@ -1,4 +1,4 @@
-﻿<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 class Main extends CI_Controller { 
 
@@ -32,6 +32,7 @@ class Main extends CI_Controller {
 		$this->load->view('water/htmlfooter.html');
 	}
 	public function order(){
+		$this->load->model('heroin');
 		$this->load->helper(array('form', 'url'));
 		$this->load->library('form_validation');
 		$this->load->library('email');
@@ -57,7 +58,9 @@ class Main extends CI_Controller {
 							'full_count' =>$this->input->post('full_count'),
 							'empty_count' =>$this->input->post('empty_count')
 				);
-
+			$data['type']=($data['optionsRadios']=='yur_lico')?'legal':'individual';
+			$data['captured']=1;
+		   	$this->heroin->setCustomer(null,$data);
 			$config['mailtype'] = 'text';
 			// $config['mailpath'] = '/usr/sbin/sendmail';
 			// $config['charset'] = 'iso-8859-1';
