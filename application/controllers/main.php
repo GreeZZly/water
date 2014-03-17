@@ -71,7 +71,7 @@ class Main extends CI_Controller {
 			$this->email->initialize($config);
 
 			$this->email->clear();
-		    $this->email->to('lineofhealth@mail.ru');
+		    $this->email->to('lineofhealth@mail.ru, semenzuev777@gmail.com');
 		    $this->email->from('iwant@lineofhealth.ru');
 		    $this->email->subject('Новая заявка!');
 		    $this->email->message("Привет!\nПоступила заявка от\nИмя: ".$data['name']."\nE-mail: ".$data['email']."\nТелефон: ".$data['phone']."\nЛицо: ".$data['optionsRadios']."\nГород: ".$data['city']."\nАдрес: ".$data['adress']."\nКоличество бутылей: ".$data['full_count']."\nСдаваемая тара: ".$data['empty_count']."\nЗаказ на сумму:".$data['cost_order']." руб.");

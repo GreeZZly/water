@@ -53,6 +53,13 @@ $(document).ready(function(){
 		e.preventDefault();
 		$(this).css({'display':'none'});
 		$('#more_link').fadeIn();
+		$('#lesslink').fadeIn();
+	});
+	$('#lesslink').on('click', function(){
+		$('#more_link').fadeOut();
+		$('#lesslink').fadeOut();
+		$('#morelink_link').delay(400).fadeIn();
+
 	});
 });
 
