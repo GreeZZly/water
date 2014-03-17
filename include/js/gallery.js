@@ -13,23 +13,39 @@ $(document).ready(function(){
   	};
 	 var portfolio = [
 		{
-			"pic":"/include/images/garanties/1.jpg",
+			"pic":"/include/images/garanties/nedr.jpg",
 			"name": "Лицензия на пользование недрами"
 		},
 		{
-			"pic":"/include/images/garanties/1.jpg",
-			"name": "Санитарно-эпидемиологическое заключение"
-		},
-		{
-			"pic":"/include/images/garanties/1.jpg",
+			"pic":"/include/images/garanties/dec_cong.jpg",
 			"name": "Декларация о соответствии"
 		},
 		{
-			"pic":"/include/images/garanties/1.jpg",
+			"pic":"/include/images/garanties/san_ped_zak.jpg",
+			"name": "Санитарно-эпидемиологическое заключение"
+		},
+		{
+			"pic":"/include/images/garanties/dec_cong2.jpg",
+			"name": "Декларация о соответствии"
+		},
+		{
+			"pic":"/include/images/garanties/sert_cong.jpg",
 			"name": "Сертификат соответствия"
 		},
 		{
-			"pic":"/include/images/garanties/1.jpg",
+			"pic":"/include/images/garanties/dec_cong3.jpg",
+			"name": "Декларация о соответствии"
+		},
+		{
+			"pic":"/include/images/garanties/sert_cong2.jpg",
+			"name": "Сертификат соответствия"
+		},
+		{
+			"pic":"/include/images/garanties/sert_cong3.jpg",
+			"name": "Сертификат соответствия"
+		},
+		{
+			"pic":"/include/images/garanties/sert_cong_pril.jpg",
 			"name": "Приложение к сертификату соответствия"
 		}
 		

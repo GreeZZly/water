@@ -171,3 +171,7 @@ background-color:#2DA511;
 	margin-top: 40px;
 	font-size: 18px;
 }
+
+#more_link {
+	display: none;
+}

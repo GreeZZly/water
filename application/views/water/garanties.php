@@ -1,7 +1,7 @@
 <div id="portfolio_background" class="block_bg">
 	<div class="container" id="portfolio"><a name="portfolio"></a>
 		<h2 class="row-fluid block_title" id="portfolio_title">
-			Наши работы
+			Гарантии качества
 		</h2>
 		<div>
 			<!-- <div class="icon_rev_left"></div> -->

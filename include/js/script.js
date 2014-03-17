@@ -19,21 +19,19 @@ $(document).ready(function(){
 		$('#reviews_content').animate({"left": "-=900px"}, "slow");
 	});
 
-	
 
-// ПЛАВНЫЙ ЯКОРь
-   $('a[href*=#]').bind("click", function(e){
-      e.preventDefault();
-      var anchor = $(this);
-      $('html, body').stop().animate({
-         scrollTop: $(anchor.attr('href')).offset().top
-      }, 1000);
-   });
+
+
 
 
 
 	$('.bxslider').bxSlider();
-
+	var recalculate = function(){
+		var full_cnt = parseInt($('#full_count option:selected').val());
+		var empty_cnt = parseInt($('#empty_count option:selected').val());
+		$('#order_cost_input').val(full_cnt*105 + (full_cnt-empty_cnt)*220);
+		$('#order_cost').html(full_cnt*105 + (full_cnt-empty_cnt)*220);
+	}
 	$('#full_count').on('change', function(){
 		var full_cnt = parseInt($('#full_count option:selected').val());
 		$('#empty_count option').remove();
@@ -42,14 +40,32 @@ $(document).ready(function(){
 			text += '<option>'+i+'</option>';
 		};
 		$('#empty_count').html(text);
-		var empty_cnt = parseInt($('#empty_count option:selected').val());
-		$('#order_cost_input').val(full_cnt*105 + (full_cnt-empty_cnt)*220);
-		$('#order_cost').html(full_cnt*105 + (full_cnt-empty_cnt)*220);
+		recalculate();
 	});
 	$('#empty_count').on('change', function(){
-		var full_cnt = parseInt($('#full_count option:selected').val());
-		var empty_cnt = parseInt($('#empty_count option:selected').val());
-		$('#order_cost_input').val(full_cnt*105 + (full_cnt-empty_cnt)*220);
-		$('#order_cost').html(full_cnt*105 + (full_cnt-empty_cnt)*220);
+		recalculate();
 	});
+
+	// $('#calc_full').on('change', function(){
+
+	// });
+	$('#morelink_link').on('click', function(e){
+		e.preventDefault();
+		$(this).css({'display':'none'});
+		$('#more_link').fadeIn();
+	});
+});
+
+$(document).ready(function(){
+
+	// ПЛАВНЫЙ ЯКОРь
+   $('a[href*=#]').bind("click", function(e){
+      e.preventDefault();
+      var anchor = $(this);
+      
+      $('html, body').stop().animate({
+         scrollTop: $(anchor.attr('href')).offset().top
+      }, 1000);
+  	
+   });
 });
