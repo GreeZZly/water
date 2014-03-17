@@ -1,7 +1,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed'); 
 
 class Heroin extends CI_Model{
-    private $id_registred_company = 17;
+    private $id_registred_company = 12;
     private $db;
     private $phase = array('cart'=>'В корзине',
                            'registration'=>'Оформление',
