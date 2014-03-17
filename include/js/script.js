@@ -1,29 +1,3 @@
-// $(function(){
-	
-// 	$('#countdown').countdown({
-// 		timestamp	: ts,
-// 		callback	: function(days, hours, minutes, seconds){
-			
-// 			var message = "";
-			
-// 			message += days + " day" + ( days==1 ? '':'s' ) + ", ";
-// 			message += hours + " hour" + ( hours==1 ? '':'s' ) + ", ";
-// 			message += minutes + " minute" + ( minutes==1 ? '':'s' ) + " and ";
-// 			message += seconds + " second" + ( seconds==1 ? '':'s' ) + " <br />";
-			
-// 			// if(newYear){
-// 			// 	message += "left until the new year!";
-// 			// }
-// 			// else {
-// 			// 	message += "left to 10 days from now!";
-// 			// }
-			
-// 			// note.html(message);
-// 		}
-// 	});
-	
-// });
-
 $(document).ready(function(){
 	$('.consult_content_item').on('click',function(){
 		var item_id = $(this).attr('itid');
@@ -49,18 +23,33 @@ $(document).ready(function(){
 
 // ПЛАВНЫЙ ЯКОРь
    $('a[href*=#]').bind("click", function(e){
+      e.preventDefault();
       var anchor = $(this);
       $('html, body').stop().animate({
          scrollTop: $(anchor.attr('href')).offset().top
       }, 1000);
-      e.preventDefault();
    });
-   return false;
 
-	
-});
 
-$(document).ready(function(){
 
 	$('.bxslider').bxSlider();
+
+	$('#full_count').on('change', function(){
+		var full_cnt = parseInt($('#full_count option:selected').val());
+		$('#empty_count option').remove();
+		var text='';
+		for (var i = 0; i < full_cnt+1; i++) {
+			text += '<option>'+i+'</option>';
+		};
+		$('#empty_count').html(text);
+		var empty_cnt = parseInt($('#empty_count option:selected').val());
+		$('#order_cost_input').val(full_cnt*105 + (full_cnt-empty_cnt)*220);
+		$('#order_cost').html(full_cnt*105 + (full_cnt-empty_cnt)*220);
+	});
+	$('#empty_count').on('change', function(){
+		var full_cnt = parseInt($('#full_count option:selected').val());
+		var empty_cnt = parseInt($('#empty_count option:selected').val());
+		$('#order_cost_input').val(full_cnt*105 + (full_cnt-empty_cnt)*220);
+		$('#order_cost').html(full_cnt*105 + (full_cnt-empty_cnt)*220);
+	});
 });

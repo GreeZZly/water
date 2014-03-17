@@ -56,7 +56,8 @@ class Main extends CI_Controller {
 							'city' =>$this->input->post('city'),
 							'adress' =>$this->input->post('adress'),
 							'full_count' =>$this->input->post('full_count'),
-							'empty_count' =>$this->input->post('empty_count')
+							'empty_count' =>$this->input->post('empty_count'),
+							'cost_order' =>$this->input->post('cost')
 				);
 			$data['type']=($data['optionsRadios']=='yur_lico')?'legal':'individual';
 			$data['captured']=1;
@@ -73,7 +74,7 @@ class Main extends CI_Controller {
 		    $this->email->to('greezzly7@gmail.com');
 		    $this->email->from('iwant@lineofhealth.ru');
 		    $this->email->subject('Новая заявка!');
-		    $this->email->message("Привет!\nПоступила заявка от\nИмя: ".$data['name']."\nE-mail: ".$data['email']."\nТелефон: ".$data['phone']."\nЛицо: ".$data['optionsRadios']."\nГород: ".$data['city']."\nАдрес: ".$data['adress']."\nКоличество бутылей: ".$data['full_count']."\nСдаваемая тара: ".$data['empty_count']."");
+		    $this->email->message("Привет!\nПоступила заявка от\nИмя: ".$data['name']."\nE-mail: ".$data['email']."\nТелефон: ".$data['phone']."\nЛицо: ".$data['optionsRadios']."\nГород: ".$data['city']."\nАдрес: ".$data['adress']."\nКоличество бутылей: ".$data['full_count']."\nСдаваемая тара: ".$data['empty_count']."\nЗаказ на сумму:".$data['cost_order']." руб.");
 		    $this->email->send();
 
 

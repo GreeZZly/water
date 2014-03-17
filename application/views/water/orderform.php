@@ -50,7 +50,7 @@
 				  <div class="control-group">
 				    <label class="control-label" >Количество бутылей:</label>
 				    <div class="controls">
-				      <select class="span2" name="full_count">
+				      <select class="span2" name="full_count" id="full_count">
 				      	<? for ($i=0; $i < 100; $i++) { 
 				      		echo "<option>".$i."</option>";
 				      	}?>
@@ -62,10 +62,8 @@
 				  <div class="control-group">
 				    <label class="control-label" >Сдаваемая оборотная тара:</label>
 				    <div class="controls">
-				      <select class="span2" name="empty_count">
-				      	<? for ($i=0; $i < 100; $i++) { 
-				      		echo "<option>".$i."</option>";
-				      	}?>
+				      <select class="span2" name="empty_count" id="empty_count">
+				      		<option>0</option>
 						  
 					  </select>
 					  <span>  Цена тары: 220 р.</span>
@@ -74,7 +72,8 @@
 				  <div class="control-group">
 				    <label class="control-label" >Стоимость заказа:</label>
 				    <div class="controls">
-				      <div class="span2">0 р.</div>
+				      <input type="hidden" name="cost" id="order_cost_input">
+				      <div class="span4"><span id="order_cost">0</span> р.</div>
 				      <div class="span3">1 бутыль = 18,9л</div>
 				    </div>
 				  </div>
