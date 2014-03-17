@@ -30,8 +30,10 @@ class Heroin extends CI_Model{
             $key_contact_info = array('phone', 'phone_work',  'phone_for_sms', 'send_sms',  'send_email',  'IM',  'fax',   'email_home',  'email_work',  'email_reserv',    'site1',   'site2',   'site3');
             $contact_info  = $this->into_arraY($key_contact_info, $array);
             $contact_info['email_home']  =$array['email'];
+            $array['surname'] = isset($array['surname'])?$array['surname']:'';
             $key_customer = array('type',  'name', 'surname', 'photo',  'second_name', 'gender',  'date_registration',   'status',  'responsibility','work_mode_c','dinner_time_c', 'id_contact_info',  'id_address',  'id_bank_details', 'ownership', 'SNILS','INN_c','description','birthday','captured');
             $customer  = $this->into_arraY($key_customer, $array);
+
             if(!isset($customer['date_registration'])) $customer['date_registration'] = date('d-m-Y');
             //var_dump($customer);
             $customer['id_contact_info']    = $this->returnInsertedId('id_contact_info' ,'contact_info'     , $contact_info     , $customer);
@@ -61,11 +63,11 @@ class Heroin extends CI_Model{
                
                 $this->db->where('id', $id)->where('id_registred_company',$this->id_registred_company)->set($customer)->update('customer');
                 $wtf = $this->db->affected_rows();
-                if($customer['type']=='individual'){
+                // if($customer['type']=='individual'){
                     
-                    $contact['id_customer'] = $id;                
-                    $this->db->where('id_customer',$id)->where('email',$array['email'])->set($contact)->update('contact');
-                }
+                //     // $contact['id_customer'] = $id;                
+                //     // $this->db->where('id_customer',$id)->where('email',$array['email'])->set($contact)->update('contact');
+                // }
                 //$temp = $this->db2->where('id', $id)->get('customer')->result_array();
             }
             else{
