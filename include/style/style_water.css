@@ -178,3 +178,24 @@ background-color:#2DA511;
 #lesslink {
 	display: none;
 }
+.myModal form{
+	margin: 0;
+}
+
+.myModal input:not([type="radio"]) {
+	width: 330px;
+}
+.auth_links {
+	padding-bottom: 10px;
+}
+
+.auth_links a {
+	font-size: 14px;
+}
+
+#entreg div {
+	cursor: pointer;
+	font-size: 16px;
+	color: #535353;
+	font-weight: bold;
+}

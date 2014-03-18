@@ -56,7 +56,7 @@
 				      	}?>
 						  
 					  </select>
-					  <span>  Цена воды: 105 р.</span>
+					  <span>  Цена воды: 130 р.</span>
 				    </div>
 				  </div>
 				  <div class="control-group">
@@ -66,7 +66,7 @@
 				      		<option>0</option>
 						  
 					  </select>
-					  <span>  Цена тары: 220 р.</span>
+					  <span>  Цена тары: 180 р.</span>
 				    </div>
 				  </div>
 				  <div class="control-group">

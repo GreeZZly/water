@@ -8,6 +8,7 @@ class Main extends CI_Controller {
 
 		$this->load->library('form_validation');
 		$this->load->view('water/htmlheader.html');
+		$this->load->view('water/reg_form');
 		$this->load->view('water/header');
 		$this->load->view('water/navbar');
 		$this->load->view('water/hero');

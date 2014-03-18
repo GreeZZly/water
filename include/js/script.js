@@ -29,8 +29,8 @@ $(document).ready(function(){
 	var recalculate = function(){
 		var full_cnt = parseInt($('#full_count option:selected').val());
 		var empty_cnt = parseInt($('#empty_count option:selected').val());
-		$('#order_cost_input').val(full_cnt*105 + (full_cnt-empty_cnt)*220);
-		$('#order_cost').html(full_cnt*105 + (full_cnt-empty_cnt)*220);
+		$('#order_cost_input').val(full_cnt*130 + (full_cnt-empty_cnt)*180);
+		$('#order_cost').html(full_cnt*130 + (full_cnt-empty_cnt)*180);
 	}
 	$('#full_count').on('change', function(){
 		var full_cnt = parseInt($('#full_count option:selected').val());
@@ -61,18 +61,17 @@ $(document).ready(function(){
 		$('#morelink_link').delay(400).fadeIn();
 
 	});
-});
-
-$(document).ready(function(){
 
 	// ПЛАВНЫЙ ЯКОРь
    $('a[href*=#]').bind("click", function(e){
       e.preventDefault();
-      var anchor = $(this);
-      
-      $('html, body').stop().animate({
-         scrollTop: $(anchor.attr('href')).offset().top
-      }, 1000);
+      var el = $($(this).attr('href'));
+      if (el.length){
+	      $('html, body').stop().animate({
+	         scrollTop: el.offset().top
+	      }, 1000);      	
+      }
   	
    });
+
 });
