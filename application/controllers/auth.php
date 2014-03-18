@@ -17,9 +17,68 @@ class Auth extends CI_Controller {
 
 		$this->form_validation->set_error_delimiters($this->config->item('error_start_delimiter', 'ion_auth'), $this->config->item('error_end_delimiter', 'ion_auth'));
 
-		$this->lang->load('auth');
+		$this->lang->load('auth','russian');
 		$this->load->helper('language');
 	}
+	function register()
+	{
+
+		// if ($this->ion_auth->logged_in() )
+		// {
+		// 	redirect('/main/', 'refresh');
+		// }
+
+		$tables = $this->config->item('tables','ion_auth');
+		
+		//validate form input
+		$this->form_validation->set_rules('name', $this->lang->line('create_user_validation_fname_label'), 'required|xss_clean');
+		$this->form_validation->set_rules('surname', $this->lang->line('create_user_validation_lname_label'), 'required|xss_clean');
+		$this->form_validation->set_rules('email', $this->lang->line('create_user_validation_email_label'), 'required|valid_email|is_unique['.$tables['users'].'.email]');
+		$this->form_validation->set_rules('phone', $this->lang->line('create_user_validation_phone_label'), 'required|xss_clean');
+		//$this->form_validation->set_rules('company', $this->lang->line('create_user_validation_company_label'), 'required|xss_clean');
+		$this->form_validation->set_rules('password', $this->lang->line('create_user_validation_password_label'), 'required|min_length[' . $this->config->item('min_password_length', 'ion_auth') . ']|max_length[' . $this->config->item('max_password_length', 'ion_auth') . ']|matches[repassword]');
+		$this->form_validation->set_rules('repassword', $this->lang->line('create_user_validation_password_confirm_label'), 'required');
+
+		if ($this->form_validation->run() == true)
+		{
+			$username = strtolower($this->input->post('name')) . ' ' . strtolower($this->input->post('surname'));
+			$email    = strtolower($this->input->post('email'));
+			$password = $this->input->post('password');
+
+			$additional_data = array(
+				'name' => $this->input->post('name'),
+				'surname'  => $this->input->post('surname'),
+				'phone'      => $this->input->post('phone'),
+			);
+		}
+		if ($this->form_validation->run() == true && $this->ion_auth->register($username, $password, $email, $additional_data))
+		{
+			//check to see if we are creating the user
+			//redirect them back to the admin page
+			$data= array();
+
+			$this->load->model('heroin');
+			$data['type']=($this->input->post('lico')=='yur_lico')?'legal':'individual';
+			$data['captured']=1;
+			$data['email'] = $email;
+
+		   	$this->heroin->setCustomer(null,array_merge($additional_data,$data));
+
+			$this->session->set_flashdata('message', $this->ion_auth->messages());
+			//print_r($this->data['message'] ); 
+			redirect('auth/login', 'refresh');
+			print_r($this->ion_auth->messages());
+
+		}
+		else
+		{
+			//display the create user form
+			//set the flash data error message if there is one
+			$this->data['message'] = (validation_errors() ? validation_errors() : ($this->ion_auth->errors() ? $this->ion_auth->errors() : $this->session->flashdata('message')));
+			print_r($this->data['message'] );
+		}
+	}
+
 
 	//redirect if needed, otherwise display the user list
 	function index()

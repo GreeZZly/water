@@ -1,7 +1,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed'); 
 
 class Heroin extends CI_Model{
-    private $id_registred_company = 12;
+    private $id_registred_company;
     private $db;
     private $phase = array('cart'=>'В корзине',
                            'registration'=>'Оформление',
@@ -11,8 +11,10 @@ class Heroin extends CI_Model{
     private $proccess = "Интернет-магазин";
     function __construct() {
         parent::__construct();
+        $this->id_registred_company = $this->config->item('id_registred_company');
         $this->db = $this->load->database('default', TRUE);
         $this->load->library('session');
+        
         
     }
     

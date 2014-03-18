@@ -173,7 +173,7 @@ class Ion_auth_model extends CI_Model
 		$this->load->config('ion_auth', TRUE);
 		$this->load->helper('cookie');
 		$this->load->helper('date');
-		$this->lang->load('ion_auth');
+		$this->lang->load('ion_auth','russian');
 
 		//initialize db tables data
 		$this->tables  = $this->config->item('tables', 'ion_auth');
@@ -641,7 +641,7 @@ class Ion_auth_model extends CI_Model
 
 		$this->trigger_events('extra_where');
 
-		return $this->db->where('username', $username)
+		return $this->db->where('login', $username)
 		                ->count_all_results($this->tables['users']) > 0;
 	}
 
@@ -826,10 +826,10 @@ class Ion_auth_model extends CI_Model
 
 		// Users table.
 		$data = array(
-		    'username'   => $username,
+		    'login'   => $username,
 		    'password'   => $password,
 		    'email'      => $email,
-		    'ip_address' => $ip_address,
+		    //'ip_address' => $ip_address,
 		    'created_on' => time(),
 		    'last_login' => time(),
 		    'active'     => ($manual_activation === false ? 1 : 0)

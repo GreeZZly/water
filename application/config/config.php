@@ -357,6 +357,6 @@ $config['rewrite_short_tags'] = TRUE;
 */
 $config['proxy_ips'] = '';
 
-
+$config['id_registred_company'] = 12;
 /* End of file config.php */
 /* Location: ./application/config/config.php */

@@ -59,7 +59,7 @@ class Ion_auth
 	{
 		$this->load->config('ion_auth', TRUE);
 		$this->load->library('email');
-		$this->lang->load('ion_auth');
+		$this->lang->load('ion_auth','russian');
 		$this->load->helper('cookie');
 		$this->load->helper('language');
 		$this->load->helper('url');

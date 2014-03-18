@@ -9,7 +9,7 @@
 	  </div>
 	  <div class="modal-body">
 	    
-	  	<form>
+	  	<form method='POST' action='/auth/register'>
 		  <fieldset>
 		    <!-- <legend>Название формы</legend> -->
 		    <!-- <label>Описание поля</label> -->
@@ -43,7 +43,7 @@
 	  </div>
 	  <div class="modal-body">
 	    
-	  	<form>
+	  	<form method='POST' action='/auth/login'>
 		  <fieldset>
 		    <!-- <legend>Название формы</legend> -->
 		    <!-- <label>Описание поля</label> -->
