@@ -66,7 +66,7 @@ class Auth extends CI_Controller {
 
 			$this->session->set_flashdata('message', $this->ion_auth->messages());
 			//print_r($this->data['message'] ); 
-			redirect('auth/login', 'refresh');
+			redirect('main/reg_success', 'refresh');
 			print_r($this->ion_auth->messages());
 
 		}
@@ -130,8 +130,8 @@ class Auth extends CI_Controller {
 				//if the login is successful
 				//redirect them back to the home page
 				$this->session->set_flashdata('message', $this->ion_auth->messages());
-				print_r($this->ion_auth->messages());
-				//redirect('/', 'refresh');
+				// print_r($this->ion_auth->messages());
+				redirect('/', 'refresh');
 			}
 			else
 			{

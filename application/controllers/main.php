@@ -1,13 +1,25 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 class Main extends CI_Controller { 
+	function __construct()
+	{
+		parent:: __construct();
+		$this->load->helper('url');
+		$this->load->helper('form');
+		$this->load->library('ion_auth');
+		$this->load->library('session');
+		$this->load->helper('cookie');
+		// $id_registred_company = 12;
 
+	}
 
 	public function	index(){
 		$this->load->helper(array('form', 'url'));
+		$data['log_on'] = ($this->ion_auth->logged_in()) ? 1 : 0;
 
 		$this->load->library('form_validation');
-		$this->load->view('water/htmlheader.html');
+
+		$this->load->view('water/htmlheader.html', $data);
 		$this->load->view('water/reg_form');
 		$this->load->view('water/header');
 		$this->load->view('water/navbar');
@@ -80,7 +92,7 @@ class Main extends CI_Controller {
 
 
 			$this->load->view('water/htmlheader.html');
-			$this->load->view('water/formsuccess');
+			$this->load->view('water/auth_success');
 			$this->load->view('water/htmlfooter.html');
 		}
 		
@@ -92,5 +104,11 @@ class Main extends CI_Controller {
 			$this->load->view('main/htmlheader.html');
 			$this->load->view('main/form_php');
 			$this->load->view('main/htmlfooter.html');
+	}
+
+	public function reg_success() {
+		$this->load->view('water/htmlheader_success.html');
+			$this->load->view('water/reg_success');
+			$this->load->view('water/htmlfooter.html');
 	}
 }

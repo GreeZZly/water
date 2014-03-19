@@ -74,4 +74,20 @@ $(document).ready(function(){
   	
    });
 
+   var suc_w = $('.success_block').width()/2;
+   var win_w = $(window).width()/2;
+   var suc_left = win_w - suc_w;
+   var suc_h = $('.success_block').height()/2;
+   var win_h = $(window).height()/2;
+   var suc_top = win_h - suc_h;
+   $('.success_block').css({'margin-left':suc_left, 'margin-top':suc_top});
+   $(window).resize(function(){
+   		var win_w = $(window).width()/2;
+   		var suc_left = win_w - suc_w;
+		var win_h = $(window).height()/2;
+   		var suc_top = win_h - suc_h;
+   		$('.success_block').css({'margin-left':suc_left, 'margin-top':suc_top});
+   });
+   // $(window).resize(function)
+   // console.log(suc_left, suc_top);
 });
