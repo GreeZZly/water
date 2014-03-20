@@ -4,10 +4,11 @@ class Main extends CI_Controller {
 	function __construct()
 	{
 		parent:: __construct();
+		$this->load->library('session');
 		$this->load->helper('url');
 		$this->load->helper('form');
 		$this->load->library('ion_auth');
-		$this->load->library('session');
+		
 		$this->load->helper('cookie');
 		// $id_registred_company = 12;
 
@@ -16,6 +17,7 @@ class Main extends CI_Controller {
 	public function	index(){
 		$this->load->helper(array('form', 'url'));
 		$data['log_on'] = ($this->ion_auth->logged_in()) ? 1 : 0;
+		$data['username'] = $this->mb_ucfirst($this->session->userdata('name'));
 
 		$this->load->library('form_validation');
 
@@ -110,5 +112,28 @@ class Main extends CI_Controller {
 		$this->load->view('water/htmlheader_success.html');
 			$this->load->view('water/reg_success');
 			$this->load->view('water/htmlfooter.html');
+	}
+	private function  mb_ucfirst($str){
+		return mb_strtoupper(mb_substr($str, 0, 1)).mb_substr($str, 1, mb_strlen($str));
+	}
+
+	public function logout(){
+		$this->ion_auth->logout();
+		redirect('/', 'refresh');
+	}
+
+	public function user_office(){
+		$this->load->helper(array('form', 'url'));
+		$data['log_on'] = ($this->ion_auth->logged_in()) ? 1 : 0;
+		$data['username'] = $this->mb_ucfirst($this->session->userdata('name'));
+
+		$this->load->library('form_validation');
+
+		$this->load->view('water/htmlheader.html', $data);
+		$this->load->view('water/reg_form');
+		$this->load->view('water/header');
+		$this->load->view('water/user_office');
+		$this->load->view('water/htmlfooter.html');
+
 	}
 }

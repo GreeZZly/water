@@ -1,7 +1,10 @@
 <div class="block_bg" id="header_bg">
 	<div class="container" id="header">
 		<div class="row-fluid">
-			<div class="span6"><img src="/include/images/logo.png"></div>
+			<div class="span6">
+				<div class="row"><img src="/include/images/logo.png"></div>
+				<?if ($log_on){?><div class="row">Здравствуйте, <?=$username;?>!</div><?}?>
+			</div>
 			<div class="span6">
 				<div class="row" id="entreg">
 					<?if (!$log_on) {?>
@@ -9,7 +12,7 @@
 					<div class="pull-right">&nbsp;|&nbsp;</div>
 					<div class="pull-right" data-toggle="modal" data-target="#auth_modal">Вход</div>
 					<?} else {?>
-					<div class="pull-right">Выход</div>
+					<div class="pull-right"><a href="/main/logout">Выход</a></div>
 					<?}?>
 
 				</div>
