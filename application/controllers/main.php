@@ -18,6 +18,15 @@ class Main extends CI_Controller {
 		$this->load->helper(array('form', 'url'));
 		$data['log_on'] = ($this->ion_auth->logged_in()) ? 1 : 0;
 		$data['username'] = $this->mb_ucfirst($this->session->userdata('name'));
+		if($data['log_on']){
+		$id = $this->ion_auth->get_user_id();
+		$user= $this->ion_auth_model->user($id)->row();
+		$data['delivery_city'] = $user->delivery_city;
+		$data['delivery_address'] = $user->delivery_address;
+		$data['phone'] = $user->phone;
+		$data['name'] = $user->name;
+		$data['email'] = $user->email;
+		}
 
 		$this->load->library('form_validation');
 
@@ -25,6 +34,7 @@ class Main extends CI_Controller {
 		$this->load->view('water/reg_form');
 		$this->load->view('water/header');
 		$this->load->view('water/navbar');
+		$this->load->view('water/video');
 		$this->load->view('water/hero');
 		$this->load->view('water/description');
 		$this->load->view('water/reviews');
@@ -128,12 +138,43 @@ class Main extends CI_Controller {
 		$data['username'] = $this->mb_ucfirst($this->session->userdata('name'));
 
 		$this->load->library('form_validation');
+		if ($data['log_on']) {
 
+			$id = $this->ion_auth->get_user_id();
+			$user= $this->ion_auth_model->user($id)->row();
+			$data['delivery_address'] = $user->delivery_address;
+			$data['phone'] = $user->phone;
+			$data['delivery_city'] = $user->delivery_city;
+
+			// echo "<pre>".print_r($data['user_data'])."</pre>";
+
+		}
 		$this->load->view('water/htmlheader.html', $data);
 		$this->load->view('water/reg_form');
 		$this->load->view('water/header');
 		$this->load->view('water/user_office');
+		$this->load->view('water/footer');
 		$this->load->view('water/htmlfooter.html');
 
+	}
+
+	public function change_user_data() {
+		if ($this->ion_auth->logged_in()){
+			$id = $this->ion_auth->get_user_id();
+			$data['delivery_city'] = $this->input->post('delivery_city');
+			$data['delivery_address'] = $this->input->post('delivery_adress');
+			$data['phone'] = $this->input->post('user_phone');
+			$this->ion_auth_model->change_user_data($id, $data);
+
+			// $data['log_on'] = 1;
+			// $data['username'] = $this->mb_ucfirst($this->session->userdata('name'));
+			// $this->load->view('water/htmlheader.html', $data);
+			// $this->load->view('water/reg_form');
+			// $this->load->view('water/header');
+			// $this->load->view('water/user_office');
+			// $this->load->view('water/footer');
+			// $this->load->view('water/htmlfooter.html');			
+		}
+		redirect('/', 'refresh');
 	}
 }

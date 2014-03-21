@@ -44,7 +44,7 @@ a{
 }
 
 #navbar_bg {
-	margin: 20px 0;
+	margin: 20px 0 0;
 	font-size: 18px;
 }
 
@@ -211,3 +211,78 @@ background-color:#2DA511;
 	background-color: #EAFEE5;
 }
 
+#video_content {
+	width: 565px;
+	margin: 0 auto 20px;
+
+}
+
+
+#video_title {
+	color: red;
+	font-size: 28px;
+	margin-bottom: 20px;
+	text-align: center;
+}
+
+#hero {
+	padding: 40px 0;
+	line-height: 30px;
+}
+#video_content {
+	margin-bottom: 30px;
+	width: 300px;
+}
+.help-block {
+	font-size: 14px;
+}
+#user_office {
+	padding: 20px 0;
+}
+#entreg a {
+	color: #31322C;
+	text-decoration: none;
+}
+
+.hidden {
+	display: none;
+	visibility: hidden;
+}
+/*
+#order_org_name {
+	display: none;
+}*/
+
+#video_bg {
+	background-color: #EAFEE5;
+	padding: 40px 0;
+	line-height: 33px;
+}
+
+#video_bg  .btn  {
+	width: 280px;
+}
+
+#hero_title {
+	color: blue;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+#hero_content {
+	color: red;
+	font-size: 50px;
+	font-weight: bold;
+	margin: 20px 0;
+}
+
+#hero_content2 {
+	color: red;
+	font-size: 36px;
+	font-weight: bold;
+	margin: 20px 0;
+}
+
+#hero .span4 {
+	margin-top: 70px;
+}

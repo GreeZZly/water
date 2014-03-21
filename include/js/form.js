@@ -59,4 +59,13 @@ $(document).ready(function (){
 		var top1 = $(window).height()/2 - 86;
 		$('#success_submit').css({'left':left1, 'top':top1});
 	});
+    $(document).on('click', '.radio input', function(){
+        if ($('#optionsRadios1:checked').length){
+            $('#order_org_names').fadeIn();
+        }
+        else {
+            $('#order_org_names').fadeOut();
+        }
+    });
+    
 });

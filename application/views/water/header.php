@@ -2,7 +2,7 @@
 	<div class="container" id="header">
 		<div class="row-fluid">
 			<div class="span6">
-				<div class="row"><img src="/include/images/logo.png"></div>
+				<div class="row"><a href="/"><img src="/include/images/logo.png"></a></div>
 				<?if ($log_on){?><div class="row">Здравствуйте, <?=$username;?>!</div><?}?>
 			</div>
 			<div class="span6">
@@ -13,6 +13,8 @@
 					<div class="pull-right" data-toggle="modal" data-target="#auth_modal">Вход</div>
 					<?} else {?>
 					<div class="pull-right"><a href="/main/logout">Выход</a></div>
+					<div class="pull-right">&nbsp;|&nbsp;</div>
+					<div class="pull-right"><a href="/main/user_office">Ваш кабинет</a></div>
 					<?}?>
 
 				</div>

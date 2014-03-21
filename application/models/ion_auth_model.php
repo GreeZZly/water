@@ -830,6 +830,8 @@ class Ion_auth_model extends CI_Model
 		    'login'   => $username,
 		    'password'   => $password,
 		    'email'      => $email,
+		    'id_registred_company' => $this->config->item('id_registred_company'),
+
 		    //'ip_address' => $ip_address,
 		    'created_on' => time(),
 		    'last_login' => time(),
@@ -2090,5 +2092,11 @@ class Ion_auth_model extends CI_Model
 	protected function _prepare_ip($ip_address) {
 		//just return the string IP address now for better compatibility
 		return $ip_address;
+	}
+
+	public function change_user_data($id,$data){
+		$id||$id= $this->session->userdata('user_id');
+		$this->db->where('id',$id)->update('user_is', $data);
+		return $this->db->affected_rows() == 1;
 	}
 }

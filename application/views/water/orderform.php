@@ -4,6 +4,8 @@
 		<div class="row-fluid">
 			<div class="span9">
 				<form class="form-horizontal" action="/main/order" method="POST" id="formorder">
+				  
+					<?if(!$log_on){?>
 				  <div class="control-group">
 				    <label class="control-label" for="inputCity">Город</label>
 				    <div class="controls">
@@ -23,13 +25,14 @@
 					  Юридическое лицо
 					 </label>
 				      <label class="radio">
-						  <input type="radio" name="optionsRadios" id="optionsRadios2" value="fiz_lico">
+						  <input type="radio" name="optionsRadios" id="optionsRadios2" value="fiz_lico" >
 						  Физическое лицо
 					  </label> 
 				    </div>
 				  </div>
-				   <div class="control-group">
-				    <label class="control-label" for="inputName">Название организации / Контактное лицо:</label>
+				  
+				  <div class="control-group">
+				    <label class="control-label" for="inputName">Название организации/Контактное лицо:</label>
 				    <div class="controls">
 				      <input type="text"  id="inputName" name="name" value="<?php echo set_value('name'); ?>">
 				    </div>
@@ -46,7 +49,17 @@
 				      <input type="text" id="inputEmail" name="email" value="<?php echo set_value('email'); ?>">
 				    </div>
 				  </div>
-				 
+				 <?} else {?>
+
+				 	<input type="hidden" id="inputCity" name="city" value="<?=$delivery_city?>">
+				    <input type="hidden" id="inputAdress" name="adress" value="<?=$delivery_address?>">
+				    <input type="hidden" name="optionsRadios" value="">
+					<!-- <input type="radio" name="optionsRadios" id="optionsRadios2" value="fiz_lico" > -->
+				    <input type="hidden"  id="inputName" name="name" value="<?=$name?>">
+				    <input type="hidden" id="inputPhone" name="phone" value="<?=$phone?>">
+				    <input type="hidden" id="inputEmail" name="email" value="<?=$email?>">
+				    
+				 <?}?>
 				  <div class="control-group">
 				    <label class="control-label" >Количество бутылей:</label>
 				    <div class="controls">
