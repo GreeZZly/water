@@ -9,7 +9,7 @@
 	  </div>
 	  <div class="modal-body">
 	    
-	  	<form method='POST' action='/auth/register'>
+	  	<form method='POST' action='/auth/register' id="regForm">
 		  <fieldset>
 		    <!-- <legend>Название формы</legend> -->
 		    <!-- <label>Описание поля</label> -->
@@ -27,7 +27,7 @@
 		    <input type="password" name="repassword" placeholder="Подтверждение">
 		    <!-- <span class="help-block">Подсказка или доп. информация.</span> -->
 		    <!-- <button type="submit" class="btn">Регистрация</button> -->
-	    	<button type="submit" class="btn btn-primary pull-right">Регистрация</button>
+	    	<button class="btn btn-primary pull-right" id="reg_submit">Регистрация</button>
 		  </fieldset>
 		</form>
 

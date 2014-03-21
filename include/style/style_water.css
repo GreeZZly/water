@@ -286,3 +286,8 @@ background-color:#2DA511;
 #hero .span4 {
 	margin-top: 70px;
 }
+
+.error {
+	color: red;
+	font-size: 13px;
+}

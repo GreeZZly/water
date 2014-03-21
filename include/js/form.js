@@ -1,7 +1,7 @@
 $(document).ready(function (){
 	
 
-	$("#formorder").validate({
+	$("#formorder, #regForm").validate({
 
        rules:{
 
@@ -20,6 +20,21 @@ $(document).ready(function (){
             	minlength: 6,
                 maxlength: 11,
                 digits: true
+            },
+            surname: {
+                required: true,
+                minlength: 2,
+                maxlength: 20,
+            },
+            password:{
+                required: true,
+                minlength: 6,
+                maxlength: 20,
+            },
+            repassword:{
+                required: true,
+                minlength: 6,
+                maxlength: 20,
             }
        },
 
@@ -47,10 +62,22 @@ $(document).ready(function (){
     });
 	$('#submitBtn').on('click', function(){
         
-		if ($("#order_form form").validate()) {
-			$("#order_form form").submit();
+        if ($("#order_form form").validate()) {
+            $("#order_form form").submit();
+        }
+    });
+
+    $('#reg_submit').on('click', function(){
+        // e.preventDefault();
+		if ($("#reg_form form").validate()) {
+			$("#reg_form form").submit();
 		}
+        else {
+
+        }
 	});
+
+
 	var left1 = $(window).width()/2 - 275;
 		var top1 = $(window).height()/2 - 86;
 		$('#success_submit').css({'left':left1, 'top':top1});
