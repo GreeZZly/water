@@ -1,7 +1,7 @@
 $(document).ready(function (){
 	
-
-	$("#formorder, #regForm").validate({
+//, #regForm"
+	$("#formorder").validate({ 
 
        rules:{
 
@@ -33,8 +33,7 @@ $(document).ready(function (){
             },
             repassword:{
                 required: true,
-                minlength: 6,
-                maxlength: 20,
+                equalTo: 
             }
        },
 
@@ -56,6 +55,21 @@ $(document).ready(function (){
                 maxlength: "Телефон должен быть максимум 11 символов",
                 digits: "Только цифры"
             },
+            surname: {
+                required: "Это поле обязательно для заполнения",
+                minlength: "Фамилия должна быть минимум 2 символа",
+                maxlength: "Фамилия должна быть максимум 20 символа"
+            },
+            password:{
+                required: "Это поле обязательно для заполнения",
+                minlength: "Пароль должен быть минимум 6 символа",
+                maxlength: "Фамилия должна быть максимум 20 символа"
+            },
+            repassword:{
+                required: "Это поле обязательно для заполнения",
+                
+            }
+
 
        }
 
