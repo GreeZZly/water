@@ -295,3 +295,7 @@ background-color:#2DA511;
 #hero_under  {
 	font-size: 13px;
 }
+
+#description p {
+	text-indent: 20px;
+}

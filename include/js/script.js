@@ -90,4 +90,10 @@ $(document).ready(function(){
    });
    // $(window).resize(function)
    // console.log(suc_left, suc_top);
+
+
+    $('iframe').each(function(){
+		var url = $(this).attr("src")
+		$(this).attr("src",url+"?wmode=transparent")
+    });
 });
