@@ -11,6 +11,7 @@ class Main extends CI_Controller {
 		
 		$this->load->helper('cookie');
 		// $id_registred_company = 12;
+		$this->water_cost = 110;
 
 	}
 
@@ -62,9 +63,11 @@ class Main extends CI_Controller {
 		$this->load->library('form_validation');
 		$this->load->library('email');
 
+		$this->form_validation->set_rules('nameOrg', 'Название организации', 'min_length[5]|max_length[100]');
 		$this->form_validation->set_rules('name', 'Имя', 'required|min_length[2]|max_length[50]');
 		$this->form_validation->set_rules('email', 'Email', 'required|valid_email');
 		$this->form_validation->set_rules('phone', 'Телефон', 'required|numeric');
+		$this->form_validation->set_rules('adress', 'Адрес', 'required');
 
 		if ($this->form_validation->run() == FALSE)
 		{
@@ -75,11 +78,18 @@ class Main extends CI_Controller {
 		else
 		{
 			$data = array('name' => $this->input->post('name'),
+							'nameOrg' => $this->input->post('nameOrg'),
 							'email' => $this->input->post('email'),
 							'phone' => $this->input->post('phone'),
 							'optionsRadios' =>$this->input->post('optionsRadios'),
-							'city' =>$this->input->post('city'),
+							// 'city' =>$this->input->post('city'),
 							'adress' =>$this->input->post('adress'),
+							'order' => array(
+									'product' => 'Вода "Ореол здоровья"',
+									'total_sum' => $this->input->post('cost_order'),
+									'cost' => $this->water_cost,
+									'quantity' => $this->input->post('full_count')
+								),
 							'full_count' =>$this->input->post('full_count'),
 							'empty_count' =>$this->input->post('empty_count'),
 							'cost_order' =>$this->input->post('cost')
@@ -88,6 +98,10 @@ class Main extends CI_Controller {
 			$data['captured']=1;
 		   	$this->heroin->setCustomer(null,$data);
 			$config['mailtype'] = 'text';
+
+			$this->load->library('apiforcrm');
+
+			$answer  = $this->apiforcrm->setApi('39911b72b0e0cbe805ea9fa294e36e72b7793539')->setCaptured($data);
 			// $config['mailpath'] = '/usr/sbin/sendmail';
 			// $config['charset'] = 'iso-8859-1';
 			// $config['wordwrap'] = FALSE;
@@ -99,7 +113,7 @@ class Main extends CI_Controller {
 		    $this->email->to('lineofhealth@mail.ru, semenzuev777@gmail.com');
 		    $this->email->from('iwant@lineofhealth.ru');
 		    $this->email->subject('Новая заявка!');
-		    $this->email->message("Привет!\nПоступила заявка от\nИмя: ".$data['name']."\nE-mail: ".$data['email']."\nТелефон: ".$data['phone']."\nЛицо: ".$data['optionsRadios']."\nГород: ".$data['city']."\nАдрес: ".$data['adress']."\nКоличество бутылей: ".$data['full_count']."\nСдаваемая тара: ".$data['empty_count']."\nЗаказ на сумму:".$data['cost_order']." руб.");
+		    $this->email->message("Привет!\nПоступила заявка от\nИмя: ".$data['name']."\nE-mail: ".$data['email']."\nТелефон: ".$data['phone']."\nЛицо: ".$data['optionsRadios']."\nАдрес: ".$data['adress']."\nКоличество бутылей: ".$data['full_count']."\nСдаваемая тара: ".$data['empty_count']."\nЗаказ на сумму:".$data['cost_order']." руб.");
 		    $this->email->send();
 
 

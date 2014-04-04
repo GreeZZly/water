@@ -17,11 +17,14 @@
 		    <input type="text" name="surname" placeholder="Ваша фамилия">
 		    <input type="text" name="phone" placeholder="Ваш номер телефона">
 		    <input type="text" name="email" placeholder="Ваш e-mail">
+		    <div class="hidden" id="reg_org_name">
+		    	<input type="text" name="nameOrg" placeholder="Название организации">
+		    </div>
 		    <label class="radio">
 		      <input type="radio" name="lico" value="yur_lico"> Юридическое лицо
 		    </label>
 		    <label class="radio">
-		      <input type="radio" name="lico" value="fiz_lico"> Физическое лицо
+		      <input type="radio" name="lico" value="fiz_lico" checked> Физическое лицо
 		    </label>
 		    <input type="password" name="password" placeholder="Пароль">
 		    <input type="password" name="repassword" placeholder="Подтверждение">

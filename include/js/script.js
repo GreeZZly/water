@@ -29,8 +29,8 @@ $(document).ready(function(){
 	var recalculate = function(){
 		var full_cnt = parseInt($('#full_count option:selected').val());
 		var empty_cnt = parseInt($('#empty_count option:selected').val());
-		$('#order_cost_input').val(full_cnt*130 + (full_cnt-empty_cnt)*180);
-		$('#order_cost').html(full_cnt*130 + (full_cnt-empty_cnt)*180);
+		$('#order_cost_input').val(full_cnt*110 + (full_cnt-empty_cnt)*180);
+		$('#order_cost').html(full_cnt*110 + (full_cnt-empty_cnt)*180);
 	}
 	$('#full_count').on('change', function(){
 		var full_cnt = parseInt($('#full_count option:selected').val());
@@ -96,4 +96,30 @@ $(document).ready(function(){
 		var url = $(this).attr("src")
 		$(this).attr("src",url+"?wmode=transparent")
     });
+
+    // юридическое физическое лицо
+    $('input[name="optionsRadios"]').on('change', function(){
+    	if($('input[name="optionsRadios"]:checked').val() == 'yur_lico') {
+    		$('#org_block').slideToggle();
+    	}
+    	else {
+    		$('#org_block').slideToggle();
+    	}
+    });
+
+    $('input[name="lico"]').on('change', function(){
+    	if($('input[name="lico"]:checked').val() == 'yur_lico') {
+    		$('#reg_org_name').slideToggle();
+    	}
+    	else
+    	{
+    		$('#reg_org_name').slideToggle();
+    	}
+
+    });
+    //автозаполнение
+    var autocomplete = new google.maps.places.Autocomplete(document.getElementById('inputAdress'), {
+    language: 'ru',
+    componentRestrictions: {country: 'ru'}
+});
 });

@@ -6,33 +6,35 @@
 				<form class="form-horizontal" action="/main/order" method="POST" id="formorder">
 				  
 					<?if(!$log_on){?>
-				  <div class="control-group">
-				    <label class="control-label" for="inputCity">Город</label>
-				    <div class="controls">
-				      <input type="text" id="inputCity" name="city" value="<?php echo set_value('city'); ?>">
-				    </div>
-				  </div>
+				 
 				  <div class="control-group">
 				    <label class="control-label" for="inputAdress">Адрес доставки</label>
 				    <div class="controls">
-				      <input type="text" id="inputAdress" name="adress" value="<?php echo set_value('adress'); ?>">
+				      <!-- <input type="text" id="inputAdress" name="adress" value=""> -->
+				      <input type="text" id="inputAdress" name="adress">
 				    </div>
 				  </div>
 				  <div class="control-group">
 				    <div class="controls">
 				     <label class="radio">
-					  <input type="radio" name="optionsRadios" id="optionsRadios1" value="yur_lico" checked>
+					  <input type="radio" name="optionsRadios" id="optionsRadios1" value="yur_lico" >
 					  Юридическое лицо
 					 </label>
 				      <label class="radio">
-						  <input type="radio" name="optionsRadios" id="optionsRadios2" value="fiz_lico" >
+						  <input type="radio" name="optionsRadios" id="optionsRadios2" value="fiz_lico" checked>
 						  Физическое лицо
 					  </label> 
 				    </div>
 				  </div>
 				  
+				  <div class="control-group hidden" id="org_block">
+				    <label class="control-label" for="inputNameOrg">Название организации:</label>
+				    <div class="controls">
+				      <input type="text"  id="inputNameOrg" name="nameOrg" value="<?php echo set_value('name'); ?>">
+				    </div>
+				  </div>
 				  <div class="control-group">
-				    <label class="control-label" for="inputName">Название организации/Контактное лицо:</label>
+				    <label class="control-label" for="inputName">Контактное лицо:</label>
 				    <div class="controls">
 				      <input type="text"  id="inputName" name="name" value="<?php echo set_value('name'); ?>">
 				    </div>
@@ -51,7 +53,7 @@
 				  </div>
 				 <?} else {?>
 
-				 	<input type="hidden" id="inputCity" name="city" value="<?=$delivery_city?>">
+				 	<!-- <input type="hidden" id="inputCity" name="city" value="<?=$delivery_city?>"> -->
 				    <input type="hidden" id="inputAdress" name="adress" value="<?=$delivery_address?>">
 				    <input type="hidden" name="optionsRadios" value="">
 					<!-- <input type="radio" name="optionsRadios" id="optionsRadios2" value="fiz_lico" > -->
@@ -69,7 +71,7 @@
 				      	}?>
 						  
 					  </select>
-					  <span>  Цена воды: 130 р.</span>
+					  <span>  Цена воды: 110 р.</span>
 				    </div>
 				  </div>
 				  <div class="control-group">

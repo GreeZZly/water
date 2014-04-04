@@ -246,7 +246,7 @@ background-color:#2DA511;
 
 .hidden {
 	display: none;
-	visibility: hidden;
+	/*visibility: hidden;*/
 }
 /*
 #order_org_name {
@@ -298,4 +298,9 @@ background-color:#2DA511;
 
 #description p {
 	text-indent: 20px;
+}
+
+.control-group input[type="text"] {
+	font-size: 14px;
+
 }
