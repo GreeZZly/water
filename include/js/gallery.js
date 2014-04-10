@@ -11,6 +11,19 @@ $(document).ready(function(){
 	    touchEnabled: true,
 	    captions: true
   	};
+
+  		var pic_mas = [];
+  		pic_mas[0] = "nedr.jpg";
+  		pic_mas[1] = "dec_cong.jpg";
+  		pic_mas[2] = "san_ped_zak.jpg";
+  		pic_mas[3] = "dec_cong2.jpg";
+  		pic_mas[4] = "sert_cong.jpg";
+  		pic_mas[5] = "dec_cong3.jpg";
+  		pic_mas[6] = "sert_cong2.jpg";
+  		pic_mas[7] = "sert_cong3.jpg";
+  		pic_mas[8] = "sert_cong_pril.jpg";
+
+  		var pic_path_b = "/include/images/garanties/";
   	 var pic_path = "/include/images/garanties/min/";
 	 var portfolio = [
 		{
@@ -54,7 +67,7 @@ $(document).ready(function(){
 	]
 	var html='';
 	for (var i=0, l=portfolio.length; i<l; i++){
-		html += '<div class="slide"><a href="'+portfolio[i].pic+'" class="zoom"><img src="'+portfolio[i].pic+'" title="'+portfolio[i].name+'"></div>'
+		html += '<div class="slide"><a href="'+pic_path_b+pic_mas[i]+'" class="zoom"><img src="'+portfolio[i].pic+'" title="'+portfolio[i].name+'"></div>'
 	}
 	$('#portfolio_row').html(html).bxSlider(params);
 });
