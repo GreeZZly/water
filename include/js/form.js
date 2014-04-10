@@ -101,11 +101,11 @@ $("#regForm").validate({
                 minlength: 6,
                 maxlength: 20,
             },
-            // repassword:{
-            //     equalTo: "#password"
-            // }
+            repassword:{
+                equalTo: "#password"
+            }
            
-       },
+       },   
 
        messages:{
 
@@ -145,6 +145,51 @@ $("#regForm").validate({
        }
 
     });
+
+    $('#user_office_form').validate({
+        rules: {
+            delivery_adress: {
+                required: true
+            },
+
+            user_phone: {
+                required: true,
+                minlength: 6,
+                maxlength: 11,
+                digits: true
+            }
+        },
+
+        messages:{
+            delivery_adress: {
+                required: "Это поле обязательно для заполнения"
+            },
+            user_phone: {
+                required: "Это поле обязательно для заполнения",
+                minlength: "Телефон должен быть минимум 6 символов",
+                maxlength: "Телефон должен быть максимум 11 символов",
+                digits: "Только цифры"   
+            }
+
+        }
+
+
+    });
+    $("#remember_form").validate({ 
+        rules:{
+            email:{
+                required: true,
+                email: true
+            }
+        },
+
+        messages:{
+            email:{
+                required: "Это поле обязательно для заполнения",
+                email: "Неверно заполнено поле электронной почты"
+            }
+        }
+    });
 	$('#submitBtn').on('click', function(){
         
         if ($("#order_form form").validate()) {
@@ -152,16 +197,36 @@ $("#regForm").validate({
         }
     });
 
-    $('#reg_submit').on('submit', function(e){
+    $('#reg_submit').on('click', function(e){
         // e.preventDefault();
         e.preventDefault();
         if ($(this).valid()) {
-			$("#regForm").submit();
+            var user_email = $('#reg_email_user').val();
+            $.post('/main/check_user_email', {'user_email':user_email}, function(text){
+                req = JSON.parse(text);
+                if (!req.status) {
+                    alert("Такой мэйл есть!");
+                    //console.log(text);
+
+                }
+                else {
+			         $("#regForm").submit();
+                }
+            });
 		}
        
 
        
 	});
+
+    $('#remember_btn').on('click', function(e){
+        e.preventDefault();
+        if($(this).valid()) {
+            // $('#remember_form').submit();
+            $('#remember_form').submit();
+        }
+    });
+
 
 
 	var left1 = $(window).width()/2 - 275;

@@ -11,41 +11,42 @@ $(document).ready(function(){
 	    touchEnabled: true,
 	    captions: true
   	};
+  	 var pic_path = "/include/images/garanties/min/";
 	 var portfolio = [
 		{
-			"pic":"/include/images/garanties/nedr.jpg",
+			"pic":pic_path+"nedr.jpg",
 			"name": "Лицензия на пользование недрами"
 		},
 		{
-			"pic":"/include/images/garanties/dec_cong.jpg",
+			"pic":pic_path+"dec_cong.jpg",
 			"name": "Декларация о соответствии"
 		},
 		{
-			"pic":"/include/images/garanties/san_ped_zak.jpg",
+			"pic":pic_path+"san_ped_zak.jpg",
 			"name": "Санитарно-эпидемиологическое заключение"
 		},
 		{
-			"pic":"/include/images/garanties/dec_cong2.jpg",
+			"pic":pic_path+"dec_cong2.jpg",
 			"name": "Декларация о соответствии"
 		},
 		{
-			"pic":"/include/images/garanties/sert_cong.jpg",
+			"pic":pic_path+"sert_cong.jpg",
 			"name": "Сертификат соответствия"
 		},
 		{
-			"pic":"/include/images/garanties/dec_cong3.jpg",
+			"pic":pic_path+"dec_cong3.jpg",
 			"name": "Декларация о соответствии"
 		},
 		{
-			"pic":"/include/images/garanties/sert_cong2.jpg",
+			"pic":pic_path+"sert_cong2.jpg",
 			"name": "Сертификат соответствия"
 		},
 		{
-			"pic":"/include/images/garanties/sert_cong3.jpg",
+			"pic":pic_path+"sert_cong3.jpg",
 			"name": "Сертификат соответствия"
 		},
 		{
-			"pic":"/include/images/garanties/sert_cong_pril.jpg",
+			"pic":pic_path+"sert_cong_pril.jpg",
 			"name": "Приложение к сертификату соответствия"
 		}
 		

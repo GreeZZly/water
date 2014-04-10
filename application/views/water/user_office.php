@@ -3,17 +3,16 @@
 		<div class="row-fluid">
 			<!-- <h3 class="row-fluid block_title">Кабинет пользователя</h3> -->
 			<div class="row-fluid">
-				<form action="/main/change_user_data" method="POST">
+				<form action="/main/change_user_data" method="POST" id="user_office_form">
 				  <fieldset>
 				    <legend>Кабинет пользователя</legend>
-				    <label>Город:</label>
-				    <input type="text" name="delivery_city" value="<?=$delivery_city?>">
-				    <br>
+				    
 				    <label>Адрес доставки воды:
 				    </label>
-				    <textarea rows="4" name="delivery_adress">
-				    	<?=$delivery_address?>
-				    </textarea>
+				   	<input type="text" id="inputAdress" name="delivery_adress" value="<?=$delivery_address?>">
+				    <!-- <textarea rows="4" name="delivery_adress">
+				    	
+				    </textarea> -->
 				    <span class="help-block">Вам достаточно один раз ввести адрес, чтоб при очередном заказе не вводить его еще раз.</span>
 				    <label>Номер вашего телефона:
 				    </label>

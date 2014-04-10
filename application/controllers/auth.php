@@ -35,7 +35,7 @@ class Auth extends CI_Controller {
 		$this->form_validation->set_rules('surname', $this->lang->line('create_user_validation_lname_label'), 'required|xss_clean');
 		$this->form_validation->set_rules('email', $this->lang->line('create_user_validation_email_label'), 'required|valid_email|is_unique['.$tables['users'].'.email]');
 		$this->form_validation->set_rules('phone', $this->lang->line('create_user_validation_phone_label'), 'required|xss_clean');
-		//$this->form_validation->set_rules('company', $this->lang->line('create_user_validation_company_label'), 'required|xss_clean');
+		$this->form_validation->set_rules('company', $this->lang->line('create_user_validation_company_label'), 'xss_clean');
 		$this->form_validation->set_rules('password', $this->lang->line('create_user_validation_password_label'), 'required|min_length[' . $this->config->item('min_password_length', 'ion_auth') . ']|max_length[' . $this->config->item('max_password_length', 'ion_auth') . ']|matches[repassword]');
 		$this->form_validation->set_rules('repassword', $this->lang->line('create_user_validation_password_confirm_label'), 'required');
 
@@ -283,7 +283,7 @@ class Auth extends CI_Controller {
 			{
 				//if there were no errors
 				$this->session->set_flashdata('message', $this->ion_auth->messages());
-				redirect("auth/login", 'refresh'); //we should display a confirmation page here instead of the login page
+				redirect("/main/remember_success", 'refresh'); //we should display a confirmation page here instead of the login page
 			}
 			else
 			{
@@ -340,7 +340,9 @@ class Auth extends CI_Controller {
 				$this->data['code'] = $code;
 
 				//render
-				$this->_render_page('auth/reset_password', $this->data);
+				$this->_render_page('water/htmlheader_success.html', $this->data);
+				$this->_render_page('auth/reset_password');
+				$this->_render_page('water/htmlfooter.html');
 			}
 			else
 			{
@@ -365,7 +367,11 @@ class Auth extends CI_Controller {
 					{
 						//if the password was successfully changed
 						$this->session->set_flashdata('message', $this->ion_auth->messages());
-						$this->logout();
+						// $this->logout();
+						$logout = $this->ion_auth->logout();
+						$this->load->view('water/htmlheader_success.html');
+						$this->load->view('water/new_pass_success');
+						$this->load->view('water/htmlfooter.html');
 					}
 					else
 					{

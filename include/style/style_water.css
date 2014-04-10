@@ -304,3 +304,17 @@ background-color:#2DA511;
 	font-size: 14px;
 
 }
+
+#new_pass_success form{
+	text-align: left;
+}
+
+.new_pass_inp input{
+	 display: block;
+    width: 100%;
+    min-height: 30px;
+    height: 44px !important;
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}

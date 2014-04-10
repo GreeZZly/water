@@ -26,6 +26,7 @@
 
 class Ion_auth_model extends CI_Model
 {
+	private $id_registred_company;
 	/**
 	 * Holds an array of tables used
 	 *
@@ -169,12 +170,14 @@ class Ion_auth_model extends CI_Model
 	public function __construct()
 	{
 		parent::__construct();
+		$this->id_registred_company = $this->config->item('id_registred_company');
 		$this->load->database();
 		$this->load->config('ion_auth', TRUE);
 		$this->load->helper('cookie');
 		$this->load->helper('date');
 		$this->lang->load('ion_auth','russian');
 		$this->load->library('session');
+
 
 		//initialize db tables data
 		$this->tables  = $this->config->item('tables', 'ion_auth');
@@ -663,7 +666,7 @@ class Ion_auth_model extends CI_Model
 
 		$this->trigger_events('extra_where');
 
-		return $this->db->where('email', $email)
+		return $this->db->where('email', $email)->where('id_registred_company', $this->id_registred_company)
 		                ->count_all_results($this->tables['users']) > 0;
 	}
 

@@ -133,8 +133,14 @@ class Main extends CI_Controller {
 	}
 
 	public function reg_success() {
-		$this->load->view('water/htmlheader_success.html');
+			$this->load->view('water/htmlheader_success.html');
 			$this->load->view('water/reg_success');
+			$this->load->view('water/htmlfooter.html');
+	}
+
+	public function remember_success(){
+		$this->load->view('water/htmlheader_success.html');
+			$this->load->view('water/remember_success');
 			$this->load->view('water/htmlfooter.html');
 	}
 	private function  mb_ucfirst($str){
@@ -190,5 +196,27 @@ class Main extends CI_Controller {
 			// $this->load->view('water/htmlfooter.html');			
 		}
 		redirect('/', 'refresh');
+	}
+
+	function check_user_email(){
+		$this->load->model('lp_model');
+		$user_email = $this->input->post('user_email');
+		$data = $this->lp_model->checkUser($user_email);
+		// print_r($data);
+		$data_request = array('status'=>false,'text'=>'Ошибка при проверке');
+		if (count($data)>0) {
+			$data_request['text']='Такой емайл уже существует';
+		}
+		else{
+			$data_request['status']=true;
+			$data_request['text']='';
+		}
+		echo json_encode($data_request);
+		// print_r($user_email);
+	}
+
+	function forgotPass(){
+		$this->ion_auth->forgotten_password($this->input->post('email'));
+		// redirect ('/', 'refresh');
 	}
 }

@@ -157,7 +157,12 @@ class Ion_auth
 					return $data;
 				}
 				else
-				{
+				{	
+					
+					$config['crlf']="\r\n";
+					$config['newline']="\r\n";
+
+					$this->email->initialize($config);
 					$message = $this->load->view($this->config->item('email_templates', 'ion_auth').$this->config->item('email_forgot_password', 'ion_auth'), $data, true);
 					$this->email->clear();
 					$this->email->from($this->config->item('admin_email', 'ion_auth'), $this->config->item('site_title', 'ion_auth'));

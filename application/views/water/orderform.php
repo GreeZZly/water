@@ -11,7 +11,7 @@
 				    <label class="control-label" for="inputAdress">Адрес доставки</label>
 				    <div class="controls">
 				      <!-- <input type="text" id="inputAdress" name="adress" value=""> -->
-				      <input type="text" id="inputAdress" name="adress">
+				      <input type="text" id="inputAdress" name="adress" placeholder="Начните вводить адрес">
 				    </div>
 				  </div>
 				  <div class="control-group">
@@ -54,7 +54,15 @@
 				 <?} else {?>
 
 				 	<!-- <input type="hidden" id="inputCity" name="city" value="<?=$delivery_city?>"> -->
-				    <input type="hidden" id="inputAdress" name="adress" value="<?=$delivery_address?>">
+				    <?if($delivery_address) {?><input type="hidden" id="inputAdress" name="adress" value="<?=$delivery_address?>"><?} else {?>
+				    <div class="control-group">
+				    <label class="control-label" >Адрес доставки:</label>
+				    <div class="controls">
+				      
+				    <input type="text" id="inputAdress" name="adress" placeholder="Начните вводить адрес"> 
+				    </div>
+				  </div>
+				    <?}?>
 				    <input type="hidden" name="optionsRadios" value="">
 					<!-- <input type="radio" name="optionsRadios" id="optionsRadios2" value="fiz_lico" > -->
 				    <input type="hidden"  id="inputName" name="name" value="<?=$name?>">
@@ -95,7 +103,7 @@
 				  <div class="control-group">
 				   
 				    <div class="controls">
-				      <input type="submit" value="Заказать воду" id="submitBtn">
+				      <input type="submit" value="Заказать воду" id="submitBtn" class="btn btn-large btn-danger">
 				    </div>
 				  </div>
 				 
