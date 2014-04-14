@@ -10,7 +10,7 @@
 class Apiforcrm{
 	private $_api;
 	private $_url;
-	private $_host = 'http://goodcrm.ru';
+	private $_host = 'http://goodcloudcrm.ru';
 	function setApi($api){
 		$this->_api = $api;
 		return $this;
