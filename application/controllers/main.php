@@ -96,7 +96,7 @@ class Main extends CI_Controller {
 				);
 			$data['type']=($data['optionsRadios']=='yur_lico')?'legal':'individual';
 			$data['captured']=1;
-		   	$this->heroin->setCustomer(null,$data);
+		   	//$this->heroin->setCustomer(null,$data);
 			$config['mailtype'] = 'text';
 
 			$this->load->library('apiforcrm');
