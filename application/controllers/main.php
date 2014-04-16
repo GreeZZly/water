@@ -37,12 +37,15 @@ class Main extends CI_Controller {
 		$this->load->view('water/navbar');
 		$this->load->view('water/video');
 		$this->load->view('water/hero');
+		$this->load->view('water/trust');
 		$this->load->view('water/description');
 		$this->load->view('water/reviews');
-		$this->load->view('water/garanties');
+		$this->load->view('water/garant_dostavka');
 		$this->load->view('water/dostavka');
 		$this->load->view('water/orderform');
+		$this->load->view('water/garanties');
 		$this->load->view('water/shedule');
+		$this->load->view('water/faq');
 		$this->load->view('water/consist');
 		$this->load->view('water/footer');
 		// $this->load->view('main/consult');

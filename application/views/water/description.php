@@ -1,6 +1,6 @@
 <div class="block_bg" id="description_bg">
 	<div class="container" id="description">
-		<h2 class="row-fluid block_title">Вода питьевая "Ореол здоровья" 18,9 л</h2>
+		<h2 class="row-fluid block_title">Что мы предлагаем?</h2>
 		<div class="row-fluid">
 			<div class="span12">
 				<div class="span2"><img src="/include/images/bottle.png"></div>

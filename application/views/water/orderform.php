@@ -2,7 +2,7 @@
 	<div class="container" id="orderform"> <a name="orderform"></a>
 		<h2 class="row-fluid block_title">Заявка на доставку воды</h2>
 		<div class="row-fluid">
-			<div class="span9">
+			<div class="span8 offset2" id="order_form_wrapper">
 				<form class="form-horizontal" action="/main/order" method="POST" id="formorder">
 				  
 					<?if(!$log_on){?>
@@ -97,21 +97,21 @@
 				    <div class="controls">
 				      <input type="hidden" name="cost" id="order_cost_input">
 				      <div class="span4"><span id="order_cost">0</span> р.</div>
-				      <div class="span3">1 бутыль = 18,9л</div>
+				      <div class="span7">1 бутыль = 18,9л</div>
 				    </div>
 				  </div>
 				  <div class="control-group">
 				   
-				    <div class="controls">
+				    <!-- <div class="controls"> -->
 				      <input type="submit" value="Заказать воду" id="submitBtn" class="btn btn-large btn-danger">
-				    </div>
+				    <!-- </div> -->
 				  </div>
 				 
 				</form>
 			</div>
-			<div class="span3">
+			<!-- <div class="span3">
 				<img src="/include/images/call_manager.jpg">
-			</div>
+			</div> -->
 		</div>
 	</div>
 </div>

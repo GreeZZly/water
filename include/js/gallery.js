@@ -1,7 +1,6 @@
 $(document).ready(function(){
 	var params = {
 	    slideWidth: 180,
-	    // adaptiveHeight: false,
 	    slideHeight:200,
 	    minSlides: 3,
 	    maxSlides: 5,
@@ -11,6 +10,19 @@ $(document).ready(function(){
 	    touchEnabled: true,
 	    captions: true
   	};
+
+  	var clogos_params = {
+  		slideWidth:175,
+  		// adaptiveWidth: true,
+  		// slideHeight: 100,
+	    adaptiveHeight: true,
+  		maxSlides: 6,
+	    moveSlides: 1,
+	    slideMargin: 10,
+	    preloadImages: 'all',
+	    touchEnabled: true,
+	    captions: true
+  	}
 
   		var pic_mas = [];
   		pic_mas[0] = "nedr.jpg";
@@ -65,9 +77,45 @@ $(document).ready(function(){
 		
 
 	]
+	var comp_path = "/include/images/companies/";
+	var companies = [
+		{
+			"pic": comp_path+"voa.png"
+		},
+		{
+			"pic": comp_path+"derevo.png"
+		},
+		{
+			"pic": comp_path+"meb_grad.png"
+		},
+		{
+			"pic": comp_path+"sm.png"
+		},
+		{
+			"pic": comp_path+"vebvideo.png"
+		},
+		{
+			"pic": comp_path+"sema.png"
+		},
+		{
+			"pic": comp_path+"sta.png"
+		},
+		{
+			"pic": comp_path+"biz_dialog.png"
+		},
+		{
+			"pic": comp_path+"akbb.png"
+		},
+	]
 	var html='';
+	var html_c = '';
 	for (var i=0, l=portfolio.length; i<l; i++){
 		html += '<div class="slide"><a href="'+pic_path_b+pic_mas[i]+'" class="zoom"><img src="'+portfolio[i].pic+'" title="'+portfolio[i].name+'"></div>'
 	}
 	$('#portfolio_row').html(html).bxSlider(params);
+
+	for (var j=0, n=companies.length; j<n; j++){
+		html_c +='<li><img src="'+companies[j].pic+'"></li>'
+	}
+	$('#companies_trust ul').html(html_c).bxSlider(clogos_params);
 });

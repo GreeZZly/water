@@ -17,7 +17,7 @@ a{
 /****************************** WATER **********************/
 .block_title {
 	text-align: center;
-	margin: 20px;
+	margin: 20px 0;
 }
 
 #orderform_bg {
@@ -91,11 +91,12 @@ background-color:#2DA511;
 #description_bg {
 	padding: 20px 0;
 	line-height: 1.5em;
+	background-color: #EAFEE5;
 }
-
+/*
 #reviews_background {
 	background-color: #91DCF3;
-}
+}*/
 
 #reviews_background ul li{line-height: 1.5em ;}
 
@@ -110,15 +111,29 @@ background-color:#2DA511;
 	width: 180px;
 }
 #portfolio_background {
-	background-color: #EAFEE5;
+	/*background-color: #EAFEE5;*/
+	-moz-box-shadow:    inset 0  8px 8px -8px #696868, 
+                        inset 0 -8px 8px -8px #696868;
+    -webkit-box-shadow: inset 0  8px 8px -8px #696868, 
+                        inset 0 -8px 8px -8px #696868;
+     box-shadow:        inset 0  8px 8px -8px #696868, 
+                        inset 0 -8px 8px -8px #696868;
 }
 #dostavka_bg {
 	padding: 20px 0;
+	-moz-box-shadow:    inset 0  8px 8px -8px #696868, 
+                        inset 0 -8px 8px -8px #696868;
+    -webkit-box-shadow: inset 0  8px 8px -8px #696868, 
+                        inset 0 -8px 8px -8px #696868;
+     box-shadow:        inset 0  8px 8px -8px #696868, 
+                        inset 0 -8px 8px -8px #696868;
 }
 
 #shedule_bg {
 	height: 300px;
 	padding: 20px 0;
+	background-image: url(/include/images/bg.jpg);
+	background-position: center;
 }
 #shedule .row-fluid div {
 	font-size: 20px;
@@ -150,7 +165,7 @@ background-color:#2DA511;
 #consist_grass {
 	height: 69px;
 	width: 100%;
-	background-image: url(/include/images/grass.png);
+	background-image: url(/include/images/trava.png);
 	position: absolute;
 	bottom: -1px;
 }
@@ -317,4 +332,91 @@ background-color:#2DA511;
     -webkit-box-sizing: border-box;
        -moz-box-sizing: border-box;
             box-sizing: border-box;
+}
+
+.title_border {
+	border-bottom: 2px solid #808080;
+	margin-top: 10px;
+}
+
+.bx-viewport img {
+	display: block;
+	margin: 0 auto;
+}
+
+#trust_bg {
+	/*box-shadow: inset 2px  0 -6px 5px #000;*/
+	 -moz-box-shadow:    inset 0  8px 8px -8px #696868, 
+                        inset 0 -8px 8px -8px #696868;
+    -webkit-box-shadow: inset 0  8px 8px -8px #696868, 
+                        inset 0 -8px 8px -8px #696868;
+     box-shadow:        inset 0  8px 8px -8px #696868, 
+                        inset 0 -8px 8px -8px #696868;
+}
+/*
+#reviews .span9 {
+	background-image: url(/include/images/vinos.png);
+	border: 2px solid #3B8D21;
+	
+
+	padding: 15px 10px 15px 15px;
+}*/
+#reviews_background {
+	-moz-box-shadow:    inset 0  8px 8px -8px #696868, 
+                        inset 0 -8px 8px -8px #696868;
+    -webkit-box-shadow: inset 0  8px 8px -8px #696868, 
+                        inset 0 -8px 8px -8px #696868;
+     box-shadow:        inset 0  8px 8px -8px #696868, 
+                        inset 0 -8px 8px -8px #696868;
+}
+#reviews .span2 {
+	margin-left: 20px;
+}
+
+
+#garant_bg {
+	background-image: url(/include/images/bg.jpg);
+	padding: 20px 0 50px;
+}
+#hundred_percent {
+	color: #005270;
+	font-size: 22px;
+	font-weight: bold;
+	margin: 60px 0 20px;
+	/*text-shadow: 0 0 1px #696868;*/
+
+}
+
+#free_water {
+	color: #494B4A;
+	font-size: 22px;
+	line-height: 30px;
+	/*text-shadow: 0 0 0 #696868;*/
+	/*text-shadow: px -1px 0 #696868,
+             -2px -2px 0.5px #696868;*/
+}
+
+#order_form_wrapper {
+	background-color: #CDFFCC;
+	box-shadow: 0 0 7px #696868;
+	border-radius: 10px;
+	padding: 20px;
+	margin-bottom: 40px;
+	/*margin: 0 auto;*/
+	/*display: block;*/
+}
+
+.faq_icon {
+	height: 51px;
+	/*width: 60px;*/
+	background-image: url(/include/images/icon.png);
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+.faq_block {
+	margin-bottom: 40px;
+	font-size: 16px;
+}
+.faq-question {
+	font-weight: bold;
 }
