@@ -62,8 +62,10 @@ class Auth extends CI_Controller {
 			$data['captured']=1;
 			$data['email'] = $email;
 
-		   	$this->heroin->setCustomer(null,array_merge($additional_data,$data));
+		   //	$this->heroin->setCustomer(null,array_merge($additional_data,$data));
+			$this->load->library('apiforcrm');
 
+			$answer  = $this->apiforcrm->setApi('39911b72b0e0cbe805ea9fa294e36e72b7793539')->setCaptured(array_merge($additional_data,$data));
 			$this->session->set_flashdata('message', $this->ion_auth->messages());
 			//print_r($this->data['message'] ); 
 			redirect('main/reg_success', 'refresh');
