@@ -17,6 +17,7 @@ class Main extends CI_Controller {
 
 	public function	index(){
 		$this->load->helper(array('form', 'url'));
+
 		$data['log_on'] = ($this->ion_auth->logged_in()) ? 1 : 0;
 		$data['username'] = $this->mb_ucfirst($this->session->userdata('name'));
 		if($data['log_on']){
@@ -37,12 +38,12 @@ class Main extends CI_Controller {
 		$this->load->view('water/navbar');
 		$this->load->view('water/video');
 		$this->load->view('water/hero');
+		$this->load->view('water/orderform');
 		$this->load->view('water/trust');
 		$this->load->view('water/description');
 		$this->load->view('water/reviews');
 		$this->load->view('water/garant_dostavka');
 		$this->load->view('water/dostavka');
-		$this->load->view('water/orderform');
 		$this->load->view('water/garanties');
 		$this->load->view('water/shedule');
 		$this->load->view('water/faq');
@@ -83,13 +84,14 @@ class Main extends CI_Controller {
 			$data = array('name' => $this->input->post('name'),
 							'nameOrg' => $this->input->post('nameOrg'),
 							'email' => $this->input->post('email'),
+
 							'phone' => $this->input->post('phone'),
 							'optionsRadios' =>$this->input->post('optionsRadios'),
 							// 'city' =>$this->input->post('city'),
 							'adress' =>$this->input->post('adress'),
 							'order' => array(
 									'product' => 'Вода "Ореол здоровья"',
-									'total_sum' => $this->input->post('cost_order'),
+									'total_sum' => $this->input->post('cost'),
 									'cost' => $this->water_cost,
 									'quantity' => $this->input->post('full_count')
 								),
@@ -99,12 +101,15 @@ class Main extends CI_Controller {
 				);
 			$data['type']=($data['optionsRadios']=='yur_lico')?'legal':'individual';
 			$data['captured']=1;
+			$data['email_home']=$this->input->post('email');
+
 		   	//$this->heroin->setCustomer(null,$data);
 			$config['mailtype'] = 'text';
 
 			$this->load->library('apiforcrm');
-
-			$answer  = $this->apiforcrm->setApi('39911b72b0e0cbe805ea9fa294e36e72b7793539')->setCaptured($data);
+			$order = array('customer' => $data, 'order'=>array('description'=>json_encode(array($data['order']))), 'reg' =>$this->ion_auth->logged_in(), 'phase'=>'cart' );
+			$answer  = $this->apiforcrm->setApi('836cab5a02d50d14cf4121097cc93da753ddc29e')->setOrder($order);
+			//$answer  = $this->apiforcrm->setApi('39911b72b0e0cbe805ea9fa294e36e72b7793539')->setOrder($order);
 			// $config['mailpath'] = '/usr/sbin/sendmail';
 			// $config['charset'] = 'iso-8859-1';
 			// $config['wordwrap'] = FALSE;

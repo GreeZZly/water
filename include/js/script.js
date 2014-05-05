@@ -23,14 +23,14 @@ $(document).ready(function(){
 
 
 
-
+	// ((full_cnt == 1) ? 130 : 110)
 
 	$('.bxslider').bxSlider();
 	var recalculate = function(){
 		var full_cnt = parseInt($('#full_count option:selected').val());
 		var empty_cnt = parseInt($('#empty_count option:selected').val());
-		$('#order_cost_input').val(full_cnt*110 + (full_cnt-empty_cnt)*180);
-		$('#order_cost').html(full_cnt*110 + (full_cnt-empty_cnt)*180);
+		$('#order_cost_input').val(full_cnt*((full_cnt == 1) ? 130 : 110) + (full_cnt-empty_cnt)*180);
+		$('#order_cost').html(full_cnt*((full_cnt == 1) ? 130 : 110) + (full_cnt-empty_cnt)*180);
 	}
 	$('#full_count').on('change', function(){
 		var full_cnt = parseInt($('#full_count option:selected').val());

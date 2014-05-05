@@ -79,7 +79,7 @@
 				      	}?>
 						  
 					  </select>
-					  <span>  Цена воды: 110 р.</span>
+					  <span>  Цена воды: 110 р.*</span>
 				    </div>
 				  </div>
 				  <div class="control-group">
@@ -106,7 +106,11 @@
 				      <input type="submit" value="Заказать воду" id="submitBtn" class="btn btn-large btn-danger">
 				    <!-- </div> -->
 				  </div>
-				 
+				 <div class="row-fluid">
+				 	<div class="span12">
+				 		* Цена воды при заказе от 2 бутылей и больше. При заказе одного бутыля - цена 130 р.
+				 	</div>
+				 </div>
 				</form>
 			</div>
 			<!-- <div class="span3">
