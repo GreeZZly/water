@@ -9,6 +9,7 @@
 		</div>
 	</div>
 </div>
+<div id="scroller" class="b-top" style="display: none;"><span class="b-top-but">наверх</span></div>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
 (function (d, w, c) {

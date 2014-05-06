@@ -27,13 +27,27 @@ $(document).ready(function(){
 
 	$('.bxslider').bxSlider();
 	var recalculate = function(){
+
 		var full_cnt = parseInt($('#full_count option:selected').val());
 		var empty_cnt = parseInt($('#empty_count option:selected').val());
-		$('#order_cost_input').val(full_cnt*((full_cnt == 1) ? 130 : 110) + (full_cnt-empty_cnt)*180);
-		$('#order_cost').html(full_cnt*((full_cnt == 1) ? 130 : 110) + (full_cnt-empty_cnt)*180);
+		$.post(
+			"/main/preorder",
+			{
+				p1: full_cnt,
+				p2: empty_cnt
+			},
+			function(data){
+				$('#order_cost_input').val(data);
+				$('#order_cost').html(data);
+			}
+		);
 	}
 	$('#full_count').on('change', function(){
 		var full_cnt = parseInt($('#full_count option:selected').val());
+		if (parseInt(full_cnt) != full_cnt) {
+			alert("Ах ты хитрый ублюдок!!");
+		}
+
 		$('#empty_count option').remove();
 		var text='';
 		for (var i = 0; i < full_cnt+1; i++) {
@@ -122,4 +136,8 @@ $(document).ready(function(){
     language: 'ru',
     componentRestrictions: {country: 'ru'}
 });
+    $(window).scroll(function () {if ($(this).scrollTop() > 0) {$('#scroller').fadeIn();} else {$('#scroller').fadeOut();}});
+		$('#scroller').click(function () {$('body,html').animate({scrollTop: 0}, 400); return false;});
+	
+
 });

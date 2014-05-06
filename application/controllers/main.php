@@ -36,13 +36,13 @@ class Main extends CI_Controller {
 		$this->load->view('water/reg_form');
 		$this->load->view('water/header');
 		$this->load->view('water/navbar');
-		$this->load->view('water/video');
 		$this->load->view('water/hero');
 		$this->load->view('water/orderform');
 		$this->load->view('water/trust');
 		$this->load->view('water/description');
 		$this->load->view('water/reviews');
 		$this->load->view('water/garant_dostavka');
+		$this->load->view('water/video');
 		$this->load->view('water/dostavka');
 		$this->load->view('water/garanties');
 		$this->load->view('water/shedule');
@@ -60,6 +60,21 @@ class Main extends CI_Controller {
 		// $this->load->view('main/question2');
 		// $this->load->view('main/footer');
 		$this->load->view('water/htmlfooter.html');
+	}
+	function preorder(){
+		$data['log_on'] = ($this->ion_auth->logged_in()) ? 1 : 0;
+			$data['full_count'] = $this->input->post('p1');
+			$data['empty_count'] = $this->input->post('p2');
+
+			if($data['log_on']) {
+				$data['total_sum'] = $data['full_count']*(($data['full_count'] == 1)? 119 : 99)+($data['full_count']-$data['empty_count'])*180;
+				echo $data['total_sum'];
+			}
+			else {
+				$data['total_sum'] = $data['full_count']*(($data['full_count'] == 1)? 130 : 110)+($data['full_count']-$data['empty_count'])*180;
+				echo $data['total_sum'];
+			}
+
 	}
 	public function order(){
 		$this->load->model('heroin');
@@ -91,14 +106,29 @@ class Main extends CI_Controller {
 							'adress' =>$this->input->post('adress'),
 							'order' => array(
 									'product' => 'Вода "Ореол здоровья"',
-									'total_sum' => $this->input->post('cost'),
+									// 'total_sum' => $this->input->post('cost'),
 									'cost' => $this->water_cost,
 									'quantity' => $this->input->post('full_count')
 								),
 							'full_count' =>$this->input->post('full_count'),
 							'empty_count' =>$this->input->post('empty_count'),
-							'cost_order' =>$this->input->post('cost')
+							'cost_order' =>$this->input->post('cost'),
+							'delivery_time_since' =>$this->input->post('delivery_time_since'),
+							'delivery_time_po' =>$this->input->post('delivery_time_po')
 				);
+			$data['log_on'] = ($this->ion_auth->logged_in()) ? 1 : 0;
+
+			if($data['log_on']) {
+				$data['order']['total_sum'] = $data['full_count']*(($data['full_count'] == 1)? 119 : 99)+($data['full_count']-$data['empty_count'])*180;
+				$data['cost_order'] = $data['order']['total_sum'];
+				// print_r($data['cost_order']);
+				// full_cnt*((full_cnt == 1) ? 130 : 110) + (full_cnt-empty_cnt)*180
+			}
+			else {
+				$data['order']['total_sum'] = $data['full_count']*(($data['full_count'] == 1)? 130 : 110)+($data['full_count']-$data['empty_count'])*180;
+				$data['cost_order'] = $data['order']['total_sum'];
+				// print_r($data['cost_order']);
+			}
 			$data['type']=($data['optionsRadios']=='yur_lico')?'legal':'individual';
 			$data['captured']=1;
 			$data['email_home']=$this->input->post('email');
@@ -121,7 +151,7 @@ class Main extends CI_Controller {
 		    $this->email->to('lineofhealth@mail.ru, semenzuev777@gmail.com');
 		    $this->email->from('iwant@lineofhealth.ru');
 		    $this->email->subject('Новая заявка!');
-		    $this->email->message("Привет!\nПоступила заявка от\nИмя: ".$data['name']."\nE-mail: ".$data['email']."\nТелефон: ".$data['phone']."\nЛицо: ".$data['optionsRadios']."\nАдрес: ".$data['adress']."\nКоличество бутылей: ".$data['full_count']."\nСдаваемая тара: ".$data['empty_count']."\nЗаказ на сумму:".$data['cost_order']." руб.");
+		    $this->email->message("Привет!\nПоступила заявка от\nИмя: ".$data['name']."\nE-mail: ".$data['email']."\nТелефон: ".$data['phone']."\nЛицо: ".$data['optionsRadios']."\nАдрес: ".$data['adress']."\nПредпочитаемое время доставки: с ".$data['delivery_time_since']." до ".$data['delivery_time_po']."\nКоличество бутылей: ".$data['full_count']."\nСдаваемая тара: ".$data['empty_count']."\nЗаказ на сумму:".$data['cost_order']." руб.");
 		    $this->email->send();
 
 

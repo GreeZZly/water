@@ -3,6 +3,7 @@
 		<h2 class="row-fluid block_title">Заявка на доставку воды</h2>
 		<div class="row-fluid">
 			<div class="span8 offset2" id="order_form_wrapper">
+				<div id="gods_cow"></div>
 				<form class="form-horizontal" action="/main/order" method="POST" id="formorder">
 				  
 					<?if(!$log_on){?>
@@ -70,6 +71,38 @@
 				    <input type="hidden" id="inputEmail" name="email" value="<?=$email?>">
 				    
 				 <?}?>
+				 <div class="control-group" id="delivery_time">
+				    <label class="control-label" for="inputTime">Предпочитаемое время доставки:</label>
+				    <div class="controls">
+				    	с <select id="inputTime" name="delivery_time_since">
+				    		<option>09:00</option>
+				    		<option>10:00</option>
+				    		<option>11:00</option>
+				    		<option>12:00</option>
+				    		<option>13:00</option>
+				    		<option>14:00</option>
+				    		<option>15:00</option>
+				    		<option>16:00</option>
+				    		<option>17:00</option>
+				    		<option>18:00</option>
+				    		<option>19:00</option>
+				    	</select>
+				    
+				    	до <select name="delivery_time_po">
+				    		<option>09:00</option>
+				    		<option>10:00</option>
+				    		<option>11:00</option>
+				    		<option>12:00</option>
+				    		<option>13:00</option>
+				    		<option>14:00</option>
+				    		<option>15:00</option>
+				    		<option>16:00</option>
+				    		<option>17:00</option>
+				    		<option>18:00</option>
+				    		<option>19:00</option>
+				    	</select>
+				    </div>
+				  </div>
 				  <div class="control-group">
 				    <label class="control-label" >Количество бутылей:</label>
 				    <div class="controls">
@@ -79,7 +112,11 @@
 				      	}?>
 						  
 					  </select>
-					  <span>  Цена воды: 110 р.*</span>
+					  <?if(!$log_on){?>
+					  	<span>  Цена воды: 110 р.*</span>
+					  <?} else{?>
+					  	<span>  Цена воды: 99 р.*</span>
+					  <?}?>
 				    </div>
 				  </div>
 				  <div class="control-group">
@@ -108,7 +145,11 @@
 				  </div>
 				 <div class="row-fluid">
 				 	<div class="span12">
+				 		<?if(!$log_on){?>
 				 		* Цена воды при заказе от 2 бутылей и больше. При заказе одного бутыля - цена 130 р.
+				 		 <?} else{?>
+				 		* Цена воды при заказе от 2 бутылей и больше. При заказе одного бутыля - цена 119 р.
+				 		<?}?>
 				 	</div>
 				 </div>
 				</form>

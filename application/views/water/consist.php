@@ -23,7 +23,7 @@
 				<div class="row-fluid">&#60; 10</div>
 				<div class="row-fluid">&#60; 220</div>
 				<div class="row-fluid">&#60; 1,2</div>
-				<div class="row-fluid">1,6-1,26</div>
+				<div class="row-fluid">1,6-2,6</div>
 			</div>
 			<div class="span4"><img src="/include/images/bottle2.png"></div>
 		</div>
