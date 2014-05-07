@@ -74,32 +74,32 @@
 				 <div class="control-group" id="delivery_time">
 				    <label class="control-label" for="inputTime">Предпочитаемое время доставки:</label>
 				    <div class="controls">
-				    	с <select id="inputTime" name="delivery_time_since">
-				    		<option>09:00</option>
-				    		<option>10:00</option>
-				    		<option>11:00</option>
-				    		<option>12:00</option>
-				    		<option>13:00</option>
-				    		<option>14:00</option>
-				    		<option>15:00</option>
-				    		<option>16:00</option>
-				    		<option>17:00</option>
-				    		<option>18:00</option>
-				    		<option>19:00</option>
+				    	с <select id="inputTimeS" name="delivery_time_since">
+				    		<option opt-id="1">09:00</option>
+				    		<option opt-id="2">10:00</option>
+				    		<option opt-id="3">11:00</option>
+				    		<option opt-id="4">12:00</option>
+				    		<option opt-id="5">13:00</option>
+				    		<option opt-id="6">14:00</option>
+				    		<option opt-id="7">15:00</option>
+				    		<option opt-id="8">16:00</option>
+				    		<option opt-id="9">17:00</option>
+				    		<option opt-id="10">18:00</option>
+				    		<option opt-id="11">19:00</option>
 				    	</select>
 				    
-				    	до <select name="delivery_time_po">
-				    		<option>09:00</option>
-				    		<option>10:00</option>
-				    		<option>11:00</option>
-				    		<option>12:00</option>
-				    		<option>13:00</option>
-				    		<option>14:00</option>
-				    		<option>15:00</option>
-				    		<option>16:00</option>
-				    		<option>17:00</option>
-				    		<option>18:00</option>
-				    		<option>19:00</option>
+				    	до <select name="delivery_time_po" id="inputTimeDo">
+				    		<option opt-id="1">09:00</option>
+				    		<option opt-id="2">10:00</option>
+				    		<option opt-id="3">11:00</option>
+				    		<option opt-id="4">12:00</option>
+				    		<option opt-id="5">13:00</option>
+				    		<option opt-id="6">14:00</option>
+				    		<option opt-id="7">15:00</option>
+				    		<option opt-id="8">16:00</option>
+				    		<option opt-id="9">17:00</option>
+				    		<option opt-id="10">18:00</option>
+				    		<option opt-id="11">19:00</option>
 				    	</select>
 				    </div>
 				  </div>

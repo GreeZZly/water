@@ -138,6 +138,26 @@ $(document).ready(function(){
 });
     $(window).scroll(function () {if ($(this).scrollTop() > 0) {$('#scroller').fadeIn();} else {$('#scroller').fadeOut();}});
 		$('#scroller').click(function () {$('body,html').animate({scrollTop: 0}, 400); return false;});
-	
+	$("#gods_cow").on('click', function(){
+		$(this).animate({
+			right: "-900px",
+			top: "-900px",
+			width: "0",
+			height: "0"
+		}, 3000);
+	});
+
+	// function timechange(){
+
+	// }
+	$("#inputTimeS").on('change', function(){
+		var oid = $("#inputTimeS option:selected").attr('opt-id');
+		var text = "";
+		for (var i = oid; i <= 11 ; i++) {
+			text +="<option>"+$("#inputTimeS [opt-id='"+i+"']").val()+"</option>";
+
+		};
+		$("#inputTimeDo").html(text);
+	});
 
 });

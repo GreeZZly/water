@@ -420,11 +420,15 @@ a{
 
 #free_water {
 	color: #494B4A;
-	font-size: 22px;
-	line-height: 30px;
+	font-size: 19px;
+	line-height: 23px;
 	/*text-shadow: 0 0 0 #696868;*/
 	/*text-shadow: px -1px 0 #696868,
              -2px -2px 0.5px #696868;*/
+}
+
+#garant_img {
+	margin-left: 18px;
 }
 
 #order_form_wrapper {
@@ -445,6 +449,7 @@ a{
 	width: 100px;
 	height: 100px;
 	background-image: url(/include/images/cow.gif);
+	/*cursor: pointer;*/
 }
 .faq_icon {
 	height: 51px;
