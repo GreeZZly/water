@@ -13,7 +13,12 @@
 		</div>
 		<div class="row-fluid">
 			<div class="span4" id="hero_btn">
+				<?if(!$log_on){?>
 				<div class="btn btn-danger btn-large" data-toggle="modal" data-target="#reg_modal">Зарегистрироваться</div>
+				
+				<?}else {?>
+				<div class="btn btn-danger btn-large disabled">Зарегистрироваться</div>
+				<?}?>
 			</div>
 		</div>
 	</div>

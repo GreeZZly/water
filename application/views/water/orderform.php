@@ -85,11 +85,11 @@
 				    		<option opt-id="8">16:00</option>
 				    		<option opt-id="9">17:00</option>
 				    		<option opt-id="10">18:00</option>
-				    		<option opt-id="11">19:00</option>
+				    		<option opt-id="11" disabled>19:00</option>
 				    	</select>
 				    
 				    	до <select name="delivery_time_po" id="inputTimeDo">
-				    		<option opt-id="1">09:00</option>
+				    		<!-- <option opt-id="1">09:00</option> -->
 				    		<option opt-id="2">10:00</option>
 				    		<option opt-id="3">11:00</option>
 				    		<option opt-id="4">12:00</option>
