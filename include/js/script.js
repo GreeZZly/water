@@ -151,9 +151,9 @@ $(document).ready(function(){
 
 	// }
 	$("#inputTimeS").on('change', function(){
-		var oid = $("#inputTimeS option:selected").attr('opt-id');
+		var oid = parseInt($("#inputTimeS option:selected").attr('opt-id'));
 		var text = "";
-		for (var i = oid; i <= 11 ; i++) {
+		for (var i = oid+1; i <= 11 ; i++) {
 			text +="<option>"+$("#inputTimeS [opt-id='"+i+"']").val()+"</option>";
 
 		};
