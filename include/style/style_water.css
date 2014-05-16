@@ -304,12 +304,12 @@ a{
 	width: 280px;
 }
 
-#hero_title {
+/*#hero_title {
 	color: blue;
 	margin-left: 5px;
 	font-size: 14px;
 	font-weight: bold;
-}
+}*/
 
 .hero_content {
 	color: #1494D1;
@@ -320,7 +320,7 @@ a{
 
 #hero_content2 {
 	color: red;
-	font-size: 26px;
+	font-size: 19px;
 	font-weight: bold;
 	margin: 5px 0;
 }
@@ -467,9 +467,11 @@ a{
 }
 
 #hero_title {
-	font-size: 50px;
-	color: red;
-	text-shadow: 2px 2px 0px #fefefe;
+	font-size: 38px;
+	color: #fefefe;
+	font-weight: bold;
+	text-align: center;
+	/*text-shadow: 2px 2px 0px #fefefe;*/
 }
 
 #hero_btn {
@@ -511,4 +513,10 @@ a{
 
 #delivery_time select{
 	width: 90px;
+}
+
+
+#products .span4 {
+	text-align: center;
+	padding: 50px;
 }
