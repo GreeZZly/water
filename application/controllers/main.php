@@ -8,7 +8,7 @@ class Main extends CI_Controller {
 		$this->load->helper('url');
 		$this->load->helper('form');
 		$this->load->library('ion_auth');
-		$this->load->model('water_model');
+		// $this->load->model('water_model');
 		
 		$this->load->helper('cookie');
 		// $id_registred_company = 12;
@@ -31,7 +31,7 @@ class Main extends CI_Controller {
 		$data['email'] = $user->email;
 		}
 
-		$data['productType'] = $this->water_model->getProductType();
+		// $data['productType'] = $this->water_model->getProductType();
 		// print_r($data['products']);
 
 		$this->load->library('form_validation');
@@ -263,18 +263,19 @@ class Main extends CI_Controller {
 		// redirect ('/', 'refresh');
 	}
 
-	function productLabels(){
-		$prod_type = $this->input->post('prod_type');
-		// $prod_type = 'Чай';
-		$data['prod_label'] = $this->water_model->getProdLabel($prod_type);
-		// echo "<pre>";
-		// print_r($data['prod_label']);
-		$this->output->set_content_type('application/json')->set_output(json_encode($data['prod_label']));
-	}
+// 	function productLabels(){
+// 		$prod_type = $this->input->post('prod_type');
+// 		// $prod_type = 'Чай';
+// 		$data['prod_label'] = $this->water_model->getProdLabel($prod_type);
+// 		// echo "<pre>";
+// 		// print_r($data['prod_label']);
+// 		$this->output->set_content_type('application/json')->set_output(json_encode($data['prod_label']));
+// 	}
 
-	function productNames(){
-		$prod_label = $this->input->post('prod_label');
-		$data['prod_name'] = $this->water_model->getProdName($prod_label);
-		$this->output->set_content_type('application/json')->set_output(json_encode($data['prod_name']));
-	}
+// 	function productNames(){
+// 		$prod_label = $this->input->post('prod_label');
+// 		$data['prod_name'] = $this->water_model->getProdName($prod_label);
+// 		$this->output->set_content_type('application/json')->set_output(json_encode($data['prod_name']));
+// 	}
+// }
 }
