@@ -14,6 +14,8 @@
 					<?} else {?>
 					<div class="pull-right"><a href="/main/logout">Выход</a></div>
 					<div class="pull-right">&nbsp;|&nbsp;</div>
+					<div class="pull-right"><a href="/main/view_cart">Корзина: <span><?=$this->cart->total_items();?></span></a></div>
+					<div class="pull-right">&nbsp;|&nbsp;</div>
 					<div class="pull-right"><a href="/main/user_office">Ваш кабинет</a></div>
 					<?}?>
 

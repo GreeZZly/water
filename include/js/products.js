@@ -33,7 +33,8 @@ $(document).ready(function(){
 				text = '';
 				for (var i = 0; i < data.length; i++) {
 					// console.log(data[i].label);
-					text +='<li class="span4"><a href="#" id="'+data[i].id+'" class="thumbnail prod_name" data-toggle="modal" data-target="#product_modal"><img data-src="holder.js/300x200" alt="" >'+data[i].name+'</a></li>';
+					// text +='<li class="span4"><a href="#" id="'+data[i].id+'" class="thumbnail prod_name"  ><img data-src="holder.js/300x200" alt="" >'+data[i].name+'</a><p>'+data[i].rus_name+'</p><p>Цена: '+data[i].price+'</p></li>';
+					text +=' <li class="span4"><div class="thumbnail"><img data-src="holder.js/300x200" alt="" src="'+data[i].img+'">  <h4>'+data[i].rus_name+'</h4>  <p>Цена: '+data[i].price+' руб.</p><p> <button type="button" id="'+data[i].id+'" class="prod_btn btn btn-success">В корзину</button></p></div></li>';
 				};
 				$('#products .thumbnails').html(text);
 			}
@@ -41,8 +42,19 @@ $(document).ready(function(){
 
 	});
 
-	$(document).on('click', '#products .prod_name', function(e){
+	$(document).on('click', '#products .prod_btn', function(e){
 		e.preventDefault();
+		var prod_id = $(this).attr('id');
+		$.post(
+			"/main/product_insert_cart",
+			{
+				prod_id: prod_id
+			},
+			function(data){
+				// alert(data[0].name);
+				$('#product_modal').modal('toggle');
+			}
+			);
 
 	});
 });

@@ -8,8 +8,8 @@ class Main extends CI_Controller {
 		$this->load->helper('url');
 		$this->load->helper('form');
 		$this->load->library('ion_auth');
-		// $this->load->model('water_model');
-		
+		$this->load->model('water_model');
+		$this->load->library('cart');
 		$this->load->helper('cookie');
 		// $id_registred_company = 12;
 		$this->water_cost = 110;
@@ -31,7 +31,7 @@ class Main extends CI_Controller {
 		$data['email'] = $user->email;
 		}
 
-		// $data['productType'] = $this->water_model->getProductType();
+		$data['productType'] = $this->water_model->getProductType();
 		// print_r($data['products']);
 
 		$this->load->library('form_validation');
@@ -40,20 +40,30 @@ class Main extends CI_Controller {
 		$this->load->view('water/reg_form');
 		$this->load->view('water/header');
 		$this->load->view('water/navbar');
-		// $this->load->view('water/products_view');
-		$this->load->view('water/hero');
-		$this->load->view('water/orderform');
-		$this->load->view('water/trust');
-		$this->load->view('water/description');
-		$this->load->view('water/reviews');
-		$this->load->view('water/garant_dostavka');
-		// $this->load->view('water/video');
-		$this->load->view('water/dostavka');
-		$this->load->view('water/garanties');
-		$this->load->view('water/shedule');
-		$this->load->view('water/faq');
-		$this->load->view('water/consist');
-		$this->load->view('water/footer');
+		if ($data['log_on']) {
+			$this->load->view('water/products_view');
+			$this->load->view('water/orderform');
+			$this->load->view('water/garant_dostavka');
+			$this->load->view('water/dostavka');
+			$this->load->view('water/shedule');
+			$this->load->view('water/consist');
+			$this->load->view('water/footer');
+			
+		} else {
+			$this->load->view('water/hero');
+			$this->load->view('water/orderform');
+			$this->load->view('water/trust');
+			$this->load->view('water/description');
+			$this->load->view('water/reviews');
+			$this->load->view('water/garant_dostavka');
+			// $this->load->view('water/video');
+			$this->load->view('water/dostavka');
+			$this->load->view('water/garanties');
+			$this->load->view('water/shedule');
+			$this->load->view('water/faq');
+			$this->load->view('water/consist');
+			$this->load->view('water/footer');
+		}
 		// $this->load->view('main/consult');
 		// $this->load->view('main/just_another_order_block');
 		// $this->load->view('main/portfolio');
@@ -263,19 +273,89 @@ class Main extends CI_Controller {
 		// redirect ('/', 'refresh');
 	}
 
-// 	function productLabels(){
-// 		$prod_type = $this->input->post('prod_type');
-// 		// $prod_type = 'Чай';
-// 		$data['prod_label'] = $this->water_model->getProdLabel($prod_type);
-// 		// echo "<pre>";
-// 		// print_r($data['prod_label']);
-// 		$this->output->set_content_type('application/json')->set_output(json_encode($data['prod_label']));
-// 	}
+	function productLabels(){
+		$prod_type = $this->input->post('prod_type');
+		// $prod_type = 'Чай';
+		$data['prod_label'] = $this->water_model->getProdLabel($prod_type);
+		// echo "<pre>";
+		// print_r($data['prod_label']);
+		$this->output->set_content_type('application/json')->set_output(json_encode($data['prod_label']));
+	}
 
-// 	function productNames(){
-// 		$prod_label = $this->input->post('prod_label');
-// 		$data['prod_name'] = $this->water_model->getProdName($prod_label);
-// 		$this->output->set_content_type('application/json')->set_output(json_encode($data['prod_name']));
-// 	}
-// }
+	function productNames(){
+		$prod_label = $this->input->post('prod_label');
+		$data['prod_name'] = $this->water_model->getProdName($prod_label);
+		$this->output->set_content_type('application/json')->set_output(json_encode($data['prod_name']));
+	}
+
+	function product_insert_cart(){
+
+		$prod_id = $this->input->post('prod_id');
+		$datum = $this->water_model->getProductById($prod_id);
+		
+		$data = array(
+               'id'      => $datum[0]['id'],
+               'qty'     => 1,
+               'price'   => $datum[0]['price'],
+               'name'    => $datum[0]['name']
+               // 'options' => array('Size' => 'L', 'Color' => 'Red')
+            );
+
+		$this->cart->insert($data);
+		$this->output->set_content_type('application/json')->set_output(json_encode($datum));
+	}
+
+	function view_cart(){
+		$this->load->helper(array('form', 'url'));
+
+		$data['log_on'] = ($this->ion_auth->logged_in()) ? 1 : 0;
+		$data['username'] = $this->mb_ucfirst($this->session->userdata('name'));
+		if($data['log_on']){
+		$id = $this->ion_auth->get_user_id();
+		$user= $this->ion_auth_model->user($id)->row();
+		$data['delivery_city'] = $user->delivery_city;
+		$data['delivery_address'] = $user->delivery_address;
+		$data['phone'] = $user->phone;
+		$data['name'] = $user->name;
+		$data['email'] = $user->email;
+		}
+
+		$data['productType'] = $this->water_model->getProductType();
+		// print_r($data['products']);
+
+		$this->load->library('form_validation');
+
+		$this->load->view('water/htmlheader.html', $data);
+		$this->load->view('water/reg_form');
+		$this->load->view('water/header');
+		$this->load->view('water/navbar');
+		$this->load->view('water/view_cart');
+		$this->load->view('water/footer');
+		// $this->load->view('main/consult');
+		// $this->load->view('main/just_another_order_block');
+		// $this->load->view('main/portfolio');
+		// $this->load->view('main/howwork');
+		// $this->load->view('main/question');
+		// $this->load->view('main/whywe');
+		// $this->load->view('main/howchoose');
+		// $this->load->view('main/banner');
+		// $this->load->view('main/question2');
+		// $this->load->view('main/footer');
+		$this->load->view('water/htmlfooter.html');
+	}
+
+
+	function update_cart(){
+		$data = array();
+		$data['qty'] = $this->input->post('sel_val');
+		$data['rowid'] = $this->input->post('row_id');
+		$this->cart->update($data); 
+		$products = array('total_sum'=>0);
+		foreach ($this->cart->contents() as $key => $value) {
+			$products['products'][]=array('rowid'=>$value['rowid'],'subtotal'=>$value['subtotal']);
+			$products['total_sum']+=$value['subtotal'];
+		}
+		$this->output->set_content_type('application/json')->set_output(json_encode($products));
+
+	}
 }

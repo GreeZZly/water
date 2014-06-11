@@ -520,3 +520,36 @@ a{
 	text-align: center;
 	padding: 50px;
 }
+
+
+/*#display_cart {
+	width: 400px;
+	position: absolute;
+	background-color: white;
+	border: 1px solid #63B5DB;
+	border-radius: 5px;
+}*/
+#display_cart table {
+
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+#display_cart table tr th {
+	border-top: 2px solid #ccc;
+	border-bottom: 2px solid #ccc;
+	text-align: left;
+}
+
+#display_cart table tr td {
+	text-align: left;
+	border-bottom: 1px solid #ccc;
+
+}
+
+#display_cart table .right {
+	text-align: right;
+}
+
+#display_cart table tr td select {
+	width: 65px;
+}
