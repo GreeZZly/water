@@ -75,9 +75,9 @@ a{
 
 
 #hero_bg {
-	background-image: url(/include/images/hero_new.jpg);
+	background-image: url(/include/images/hero_new2.jpg);
 	background-position: center; 
-	height: 737px;
+	height: 735px;
 }
 #water_counter {
 	padding: 10px;
@@ -475,7 +475,7 @@ a{
 }
 
 #hero_btn {
-	margin-top: 315px;
+	margin-top: 420px;
 	margin-left: 19px;
 }
 
@@ -552,4 +552,8 @@ a{
 
 #display_cart table tr td select {
 	width: 65px;
+}
+
+#cart_modal select {
+	width: 90px;
 }

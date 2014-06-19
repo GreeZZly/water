@@ -175,6 +175,32 @@ $("#regForm").validate({
 
 
     });
+
+    $('#products_order').validate({
+        rules: {
+            delivery_adress: {
+                required: true
+            },
+
+            user_phone: {
+                required: true,
+                minlength: 6,
+                maxlength: 11,
+                digits: true
+            } 
+        },
+        messages:{
+            delivery_adress: {
+                required: "Это поле обязательно для заполнения"
+            },
+            user_phone: {
+                required: "Это поле обязательно для заполнения",
+                minlength: "Телефон должен быть минимум 6 символов",
+                maxlength: "Телефон должен быть максимум 11 символов",
+                digits: "Только цифры"   
+            }
+        }
+    });
     $("#remember_form").validate({ 
         rules:{
             email:{

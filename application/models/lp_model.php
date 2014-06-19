@@ -15,5 +15,9 @@ class Lp_model extends CI_Model{
         // echo $this->db->last_query();
     	return $query;
     }
+
+    function getUserById($user_id){
+        return  $this->db->query("select name, surname, email, phone, delivery_address from user_is where id = '$user_id' and id_registred_company = '$this->id_registred_company'")->result_array();
+    }
 }
 ?>

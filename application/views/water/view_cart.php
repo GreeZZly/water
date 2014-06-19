@@ -62,8 +62,73 @@
 
 	</table>
 
-	<p style="display:inline-block;"><?php echo form_submit('', 'Обновить корзину'); ?></p>
-	<p style="display:inline-block;"><?php echo form_submit('', 'Очистить корзину'); ?></p>
-	<p style="display:inline-block;"><?php echo form_submit('', 'Оформить заказ'); ?></p>
+	<p style="display:inline-block;"><input type="submit" id="del_cart" name="delete_cart" value="Очистить корзину"></p>
+	<p style="display:inline-block;"><input type="submit" id="makeOrder" name="make_order" value="Оформить заказ"></p>
 
 </div>
+
+<div class="modal hide fade myModal" id="cart_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+	  <div class="modal-header">
+	    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+	    <h3>Благодарим за заказ!</h3>
+	  </div>
+	  <div class="modal-body"><form method='POST' id="dsda"></form>
+	  <form method='POST' id="products_order" action="/">
+	  	<div class="control-group">
+	  		Выберите удобное время доставки
+	  </div>
+	  	<div class="control-group">
+		    <div class="controls">
+				    	с <select id="inputTimeS" name="delivery_time_since">
+				    		<option opt-id="1">09:00</option>
+				    		<option opt-id="2">10:00</option>
+				    		<option opt-id="3">11:00</option>
+				    		<option opt-id="4">12:00</option>
+				    		<option opt-id="5">13:00</option>
+				    		<option opt-id="6">14:00</option>
+				    		<option opt-id="7">15:00</option>
+				    		<option opt-id="8">16:00</option>
+				    		<option opt-id="9">17:00</option>
+				    		<option opt-id="10">18:00</option>
+				    		<option opt-id="11" disabled>19:00</option>
+				    	</select>
+				    
+				    	до <select name="delivery_time_po" id="inputTimeDo">
+				    		<!-- <option opt-id="1">09:00</option> -->
+				    		<option opt-id="2">10:00</option>
+				    		<option opt-id="3">11:00</option>
+				    		<option opt-id="4">12:00</option>
+				    		<option opt-id="5">13:00</option>
+				    		<option opt-id="6">14:00</option>
+				    		<option opt-id="7">15:00</option>
+				    		<option opt-id="8">16:00</option>
+				    		<option opt-id="9">17:00</option>
+				    		<option opt-id="10">18:00</option>
+				    		<option opt-id="11">19:00</option>
+				    	</select>
+				    </div>
+		</div>
+		<div class="control-group">
+		    <label class="control-label" for="user_phone">Ваш телефон:</label>
+		    <div class="controls">
+		      <input type="text" name="user_phone" value="" id="user_phone">
+		    </div>
+		</div>
+		<div class="control-group">
+		    <label class="control-label" for="inputAdressModal">Ваш адрес:</label>
+		    <div class="controls">
+		      <input type="text" id="inputAdressModal" name="delivery_adress" value="">
+		    </div>
+		</div>
+
+		  <fieldset>
+		    <!-- <legend>Название формы</legend> -->
+		    <!-- <label>Описание поля</label> -->
+		   
+	    	<button class="btn btn-primary pull-right" id="cart_submit">Завершить заказ</button>
+		  </fieldset>
+		</form>
+
+	  </div>
+	  
+	</div>

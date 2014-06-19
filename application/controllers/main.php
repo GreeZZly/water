@@ -9,8 +9,10 @@ class Main extends CI_Controller {
 		$this->load->helper('form');
 		$this->load->library('ion_auth');
 		$this->load->model('water_model');
+		$this->load->model('lp_model');
 		$this->load->library('cart');
 		$this->load->helper('cookie');
+		$this->load->library('session');
 		// $id_registred_company = 12;
 		$this->water_cost = 110;
 
@@ -75,6 +77,7 @@ class Main extends CI_Controller {
 		// $this->load->view('main/question2');
 		// $this->load->view('main/footer');
 		$this->load->view('water/htmlfooter.html');
+
 	}
 	function preorder(){
 		$data['log_on'] = ($this->ion_auth->logged_in()) ? 1 : 0;
@@ -325,6 +328,8 @@ class Main extends CI_Controller {
 
 		$this->load->library('form_validation');
 
+		// $order_data = $this->session->userdata('user_id');
+		// print_r($order_data);
 		$this->load->view('water/htmlheader.html', $data);
 		$this->load->view('water/reg_form');
 		$this->load->view('water/header');
@@ -357,5 +362,79 @@ class Main extends CI_Controller {
 		}
 		$this->output->set_content_type('application/json')->set_output(json_encode($products));
 
+	}
+
+	function pre_order(){
+		$user_id = $this->session->userdata('user_id');
+		$user_data = $this->lp_model->getUserById($user_id);
+		$this->output->set_content_type('application/json')->set_output(json_encode($user_data));
+		
+	}
+	function make_order(){
+		$this->load->helper(array('form', 'url'));
+		$this->load->library('email');
+
+		$user_phone = $this->input->post('user_phone');
+		$user_adress = $this->input->post('delivery_adress');
+		$time_s = $this->input->post('time_s');
+		$time_po = $this->input->post('time_po');
+
+		$user_id = $this->session->userdata('user_id');
+		$user_data = $this->lp_model->getUserById($user_id);
+		$product_data = $this->cart->contents();
+		$total_cart = $this->cart->total();
+		
+		
+		$temp_arr = array();
+		$order_table ='<tr><td>ID</td><td>Название</td><td>Количество</td><td>Цена</td><td>Сумма</td></tr>';
+		foreach ($product_data as $key => $value) {
+			$temp_arr[] = array('quantity' => $value['qty'],
+								'cost' => $value['price'],
+								'id' => $value['id'],
+								'product' => $value['name'],
+								'total_sum' => $value['subtotal']
+				);
+
+			$order_table = $order_table."<tr><td>".$value['id']."</td><td>".$value['name']."</td><td>".$value['qty']."</td><td>".$value['price']."</td><td>".$value['subtotal']."</td></tr>";
+		}
+
+
+		// $desc = '[{"quantity":"1","cost":"2532","id":"85","total_sum":2532,"product":"10402"}]';
+		$desc = json_encode($temp_arr);
+		$data = array('name' => $user_data[0]['name'],
+							'surname' => $user_data[0]['surname'],
+							'adress' => $user_adress,
+							'email' => $user_data[0]['email'],
+							'phone' => $user_phone,
+							'order' => array('description'=>$desc),
+							'description' => array(
+								'delivery_time_since' =>$time_s,
+								'delivery_time_po' =>$time_po
+								),
+							'total' => $total_cart
+				);
+
+		// echo "<table>".$order_table."</table>";
+		// $config['mailtype'] = 'html';
+		$config['protocol'] = 'sendmail';
+		// $config['newline'] = "\r\n";
+		//  $config['wordwrap'] = FALSE;
+		// $config['wrapchars'] = 76;
+
+
+		$this->load->library('apiforcrm');
+		$order = array('customer' => $data, 'order'=>$data['order'], 'reg' =>$this->ion_auth->logged_in(), 'phase'=>'cart' );
+		$answer  = $this->apiforcrm->setApi('836cab5a02d50d14cf4121097cc93da753ddc29e')->setOrder($order);
+		//39911b72b0e0cbe805ea9fa294e36e72b7793539
+		$this->email->initialize($config);
+		$this->email->clear();
+	    $this->email->to('lineofhealth@mail.ru, semenzuev777@gmail.com');
+	    $this->email->from('iwant@lineofhealth.ru');
+	    $this->email->subject('Заявка на продукты!');
+	    $this->email->message("{unwrap}<p>Привет!</p><p>Поступила заявка от</p><p>Имя: ".$data['name']."</p><p>E-mail: ".$data['email']."</p><p>Телефон: ".$data['phone']."</p><p>Адрес: ".$data['adress']."</p><table>".$order_table."</table><p>Желательное время доставки: с ".$time_s." до ".$time_po."</p><p>Заказ на сумму: ".$data['total']." руб.</p>{/unwrap}");
+	    $this->email->send();
+
+	    $this->cart->destroy();
+		$this->output->set_content_type('application/json')->set_output(json_encode($data));
 	}
 }

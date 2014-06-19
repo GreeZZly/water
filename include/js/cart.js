@@ -29,4 +29,48 @@ $(document).ready(function(){
 				}
 			);
 	});
+
+	$(document).on('click', '#makeOrder', function(e){
+		e.preventDefault();
+		$.post(
+				"/main/pre_order",
+				{},
+				function(data){
+					// console.log(data[0].phone);
+
+					$('#cart_modal #user_phone').val(data[0].phone);
+					$('#cart_modal #inputAdressModal').val(data[0].delivery_address);
+					$('#cart_modal').modal();
+				}
+			);
+	});
+
+	$(document).on('click', '#cart_submit', function(e){
+		e.preventDefault();
+		var inputTimeS = $('#inputTimeS selected').val();
+		var inputTimeDo = $('#inputTimeDo selected').val();
+		var user_phonec = $('#user_phone').val();
+		var inputAdressModal = $('#inputAdressModal').val();
+		if ($('#products_order').valid()){
+			$.post(
+					"/main/make_order",
+					{
+						time_s: inputTimeS,
+						time_po: inputTimeDo,
+						user_phone: user_phonec,
+						delivery_adress: inputAdressModal
+					},
+					function(data){
+						// alert('OK');
+						// console.log('ok');
+						$('#cart_modal').modal('hide');
+						location.reload();
+						// $('#cart_modal #user_phone').val(data.phone);
+						// $('#cart_modal #inputAdressModal').val(data.adress);
+						// $('#cart_modal').modal();
+
+					}
+				);
+		}
+	});
 });

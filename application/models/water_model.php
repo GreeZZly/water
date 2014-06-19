@@ -25,5 +25,6 @@ class Water_model extends CI_Model{
 		$query = $this->db->query("SELECT id, name, rus_name, price, img FROM water_products WHERE label='$prod_label'")->result_array();
 		return $query;		
 	}
+
 }
 ?>
