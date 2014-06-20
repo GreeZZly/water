@@ -479,9 +479,9 @@ a{
 	margin-left: 19px;
 }
 
-#full_count, #empty_count {
+/*#full_count, #empty_count {
 	width: 60px;
-}
+}*/
 .b-top {
 	z-index:2600;
 	position:fixed;
@@ -556,4 +556,14 @@ a{
 
 #cart_modal select {
 	width: 90px;
+}
+
+#cart_modal {
+	width: 387px;
+}
+
+.modal-footer .span2 {
+	line-height: 30px;
+	margin-left: 0;
+	padding-left: 0;
 }

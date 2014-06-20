@@ -26,10 +26,12 @@ $(document).ready(function(){
 	// ((full_cnt == 1) ? 130 : 110)
 
 	$('.bxslider').bxSlider();
+		var total = +$('#cart_modal_total').html();
 	var recalculate = function(){
 
 		var full_cnt = parseInt($('#full_count option:selected').val());
 		var empty_cnt = parseInt($('#empty_count option:selected').val());
+
 		$.post(
 			"/main/preorder",
 			{
@@ -39,6 +41,9 @@ $(document).ready(function(){
 			function(data){
 				$('#order_cost_input').val(data);
 				$('#order_cost').html(data);
+				$('#cart_modal_total_input').val(total+parseInt(data));
+				$('#cart_modal_total').html(total+parseInt(data));
+
 			}
 		);
 	}

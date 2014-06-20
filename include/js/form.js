@@ -187,7 +187,12 @@ $("#regForm").validate({
                 minlength: 6,
                 maxlength: 11,
                 digits: true
-            } 
+            },
+             full_count: {
+                selectcheck:true
+
+            }
+
         },
         messages:{
             delivery_adress: {
@@ -198,6 +203,10 @@ $("#regForm").validate({
                 minlength: "Телефон должен быть минимум 6 символов",
                 maxlength: "Телефон должен быть максимум 11 символов",
                 digits: "Только цифры"   
+            },
+            full_count: {
+                selectcheck: "Поле хобязательно для заполнения."
+
             }
         }
     });

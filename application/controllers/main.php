@@ -321,6 +321,13 @@ class Main extends CI_Controller {
 		$data['phone'] = $user->phone;
 		$data['name'] = $user->name;
 		$data['email'] = $user->email;
+		$data['total_sum'] = $this->cart->total();
+		}
+		if($this->cart->total_items()!=0){
+			$data['empty_cart'] = 0;
+		}
+		else {
+			$data['empty_cart'] = 1;	
 		}
 
 		$data['productType'] = $this->water_model->getProductType();
@@ -335,6 +342,7 @@ class Main extends CI_Controller {
 		$this->load->view('water/header');
 		$this->load->view('water/navbar');
 		$this->load->view('water/view_cart');
+		$this->load->view('water/consist');
 		$this->load->view('water/footer');
 		// $this->load->view('main/consult');
 		// $this->load->view('main/just_another_order_block');
@@ -366,9 +374,14 @@ class Main extends CI_Controller {
 
 	function pre_order(){
 		$user_id = $this->session->userdata('user_id');
-		print_r($user_id);
+		// print_r($user_id);
 		$user_data = $this->lp_model->getUserById($user_id);
-		$this->output->set_content_type('application/json')->set_output(json_encode($user_data));
+		$user_data_row = array('name' => $user_data[0]['name'],
+								'surname' => $user_data[0]['surname'],
+								'adress' => $user_data[0]['delivery_address'],
+								'phone' => $user_data[0]['phone']
+			);
+		$this->output->set_content_type('application/json')->set_output(json_encode($user_data_row));
 		
 	}
 	function make_order(){
@@ -385,6 +398,11 @@ class Main extends CI_Controller {
 		$product_data = $this->cart->contents();
 		$total_cart = $this->cart->total();
 		
+		$full_count = $this->input->post('full_count');
+		$empty_count = $this->input->post('empty_count');
+		$total_water = $full_count*(($full_count == 1)? 119 : 99)+($full_count-$empty_count)*180;
+		$total_prod_water = $total_cart + $total_water;
+
 		
 		$temp_arr = array();
 		$order_table ='<tr><td>ID</td><td>Название</td><td>Количество</td><td>Цена</td><td>Сумма</td></tr>';
@@ -410,9 +428,11 @@ class Main extends CI_Controller {
 							'order' => array('description'=>$desc),
 							'description' => array(
 								'delivery_time_since' =>$time_s,
-								'delivery_time_po' =>$time_po
+								'delivery_time_po' =>$time_po,
+								'full_count' => $full_count,
+								'empty_count' => $empty_count
 								),
-							'total' => $total_cart
+							'total' => $total_prod_water
 				);
 
 		// echo "<table>".$order_table."</table>";
@@ -432,10 +452,14 @@ class Main extends CI_Controller {
 	    $this->email->to('lineofhealth@mail.ru, semenzuev777@gmail.com');
 	    $this->email->from('iwant@lineofhealth.ru');
 	    $this->email->subject('Заявка на продукты!');
-	    $this->email->message("{unwrap}<p>Привет!</p><p>Поступила заявка от</p><p>Имя: ".$data['name']."</p><p>E-mail: ".$data['email']."</p><p>Телефон: ".$data['phone']."</p><p>Адрес: ".$data['adress']."</p><table>".$order_table."</table><p>Желательное время доставки: с ".$time_s." до ".$time_po."</p><p>Заказ на сумму: ".$data['total']." руб.</p>{/unwrap}");
+	    $this->email->message("{unwrap}<p>Привет!</p><p>Поступила заявка от</p><p>Имя: ".$data['name']."</p><p>E-mail: ".$data['email']."</p><p>Телефон: ".$data['phone']."</p><p>Адрес: ".$data['adress']."</p><table>".$order_table."</table><p>Количество бутылей с водой: ".$full_count."</p><p>Количество сдаваемой тары ".$empty_count."</p><p>Желательное время доставки: с ".$time_s." до ".$time_po."</p><p>Заказ на сумму: ".$data['total']." руб.</p>{/unwrap}");
 	    $this->email->send();
 
 	    $this->cart->destroy();
 		$this->output->set_content_type('application/json')->set_output(json_encode($data));
+	}
+
+	function destroy_cart(){
+		$this->cart->destroy();
 	}
 }
