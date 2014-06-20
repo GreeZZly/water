@@ -366,6 +366,7 @@ class Main extends CI_Controller {
 
 	function pre_order(){
 		$user_id = $this->session->userdata('user_id');
+		print_r($user_id);
 		$user_data = $this->lp_model->getUserById($user_id);
 		$this->output->set_content_type('application/json')->set_output(json_encode($user_data));
 		

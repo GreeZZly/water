@@ -36,8 +36,8 @@ $(document).ready(function(){
 				"/main/pre_order",
 				{},
 				function(data){
-					// console.log(data[0].phone);
-
+					console.log(data);
+					if(!data[0]) data[0]={};
 					$('#cart_modal #user_phone').val(data[0].phone);
 					$('#cart_modal #inputAdressModal').val(data[0].delivery_address);
 					$('#cart_modal').modal();
